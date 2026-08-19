@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Roushan Kumar | FocusOn Interiors — Executive Profile</title>
+    
+    <!-- Tailwind CSS + Custom Configuration -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter Premium Suite -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome 6 (Official Social Media Icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Lucide Icons for Utility -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        brandRed: '#D62828',
+                        brandRedDark: '#B21E1E',
+                        brandLightGray: '#F5F7FA',
+                        brandYellow: '#FFC857',
+                        textDark: '#1E293B',
+                        textMuted: '#475569',
+                        borderGray: '#E9EEF3'
+                    },
+                    boxShadow: {
+                        'premium': '0 20px 35px -12px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0,0,0,0.02)',
+                        'card-hover': '0 25px 40px -12px rgba(214,40,40,0.18)',
+                        'buttonShadow': '0 8px 18px -6px rgba(214,40,40,0.25)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * { -webkit-tap-highlight-color: transparent; }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #F1F1F1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: #D62828; border-radius: 10px; }
+        
+        .smooth-transition { transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1); }
+        .flip-card-perspective { perspective: 1600px; }
+        .flip-inner {
+            transition: transform 0.75s cubic-bezier(0.23, 1, 0.32, 1);
+            transform-style: preserve-3d;
+        }
+        .flip-inner.flipped { transform: rotateY(180deg); }
+        .card-front, .card-back { backface-visibility: hidden; }
+        .card-back { transform: rotateY(180deg); }
+        
+        /* refined image frame */
+        .profile-frame {
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2), 0 8px 20px -8px rgba(0,0,0,0.2);
+        }
+        .brand-glow {
+            background: radial-gradient(circle at 30% 20%, rgba(214,40,40,0.03) 0%, rgba(255,200,87,0.02) 100%);
+        }
+    </style>
+</head>
+<body class="bg-[#F2F5F9] text-textDark font-sans antialiased flex justify-center items-start min-h-screen py-6">
+
+    <!-- MAIN CARD CONTAINER: Modern max-w-md premium shadow -->
+    <div class="w-full max-w-md mx-auto bg-white rounded-[2rem] shadow-2xl relative overflow-hidden border border-white/40 backdrop-blur-sm">
+        
+        <!-- Subtle brand grain texture -->
+        <div class="absolute inset-0 pointer-events-none opacity-20 bg-[radial-gradient(#D62828_0.8px,transparent_0.8px)] [background-size:16px_16px]"></div>
+        
+        <!-- Sticky Header -->
+        <header class="sticky top-0 z-30 bg-white/98 backdrop-blur-md border-b border-gray-100/80 px-5 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="LOGO_FOCUS.png" alt="FocusOn Interiors" class="h-9 w-auto object-contain drop-shadow-sm" onerror="this.src='https://placehold.co/240x72/D62828/white?text=FocusOn+Interiors';">
+            </div>
+            <div class="flex gap-1">
+                <button onclick="openQrModal()" class="p-2 rounded-xl text-textMuted hover:text-brandRed hover:bg-red-50 smooth-transition" title="Scan corporate QR">
+                    <i data-lucide="qr-code" class="w-5 h-5"></i>
+                </button>
+                <button onclick="openShareModal()" class="p-2 rounded-xl text-textMuted hover:text-brandRed hover:bg-red-50 smooth-transition" title="Share profile">
+                    <i data-lucide="share-2" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- EXECUTIVE FLIP CARD SECTION (premium redesign) -->
+        <section class="px-5 pt-5 pb-3">
+            <div class="flex justify-between items-center mb-3">
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-brandRed animate-pulse"></span>
+                    <span class="text-[10px] font-extrabold text-brandRed tracking-[0.2em]">VERIFIED ACCESS</span>
+                </div>
+                <button onclick="toggleCardOrientation()" class="text-[10px] font-bold text-textMuted hover:text-brandRed bg-gray-100/70 hover:bg-gray-100 py-1.5 px-3 rounded-full flex items-center gap-1.5 transition-all">
+                    <i data-lucide="refresh-cw" class="w-3 h-3"></i> FLIP CARD
+                </button>
+            </div>
+
+            <!-- Double-Sided ID Card with premium depth -->
+            <div class="flip-card-perspective w-full h-[480px]">
+                <div id="badgeCard" class="flip-inner relative w-full h-full cursor-pointer" onclick="toggleCardOrientation()">
+                    
+                    <!-- FRONT: Professional Identity Panel -->
+                    <div class="card-front absolute inset-0 w-full h-full bg-white rounded-2xl shadow-premium border border-gray-100/80 p-5 flex flex-col justify-between overflow-hidden">
+                        <div class="absolute -top-6 -right-6 w-28 h-28 bg-brandRed/5 rounded-full blur-2xl"></div>
+                        <!-- Profile photo frame (best fit) -->
+                        <div class="relative w-full h-[280px] rounded-xl overflow-hidden shadow-md bg-brandRed profile-frame">
+                            <img src="Profile.jpeg" alt="Roushan Kumar" class="w-full h-full object-cover object-center scale-100 transition-transform duration-700 hover:scale-105"
+                                 onerror="this.src='https://placehold.co/600x700/D62828/FFFFFF?text=Roushan+Kumar';">
+                            <div class="absolute bottom-3 left-3 bg-white/95 backdrop-blur-sm rounded-full px-2.5 py-1 flex items-center gap-1 shadow-md">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brandRed"></span>
+                                <span class="text-[8px] font-black text-brandRed uppercase tracking-wide">Site ID · Active</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 text-center">
+                            <h2 class="text-2xl font-black text-textDark tracking-tight">Roushan Kumar</h2>
+                            <p class="text-[11px] font-extrabold text-brandRed uppercase tracking-widest mt-0.5">Project Coordinator</p>
+                            <div class="flex justify-center items-center gap-1 mt-1 text-textMuted text-[10px] font-medium">
+                                <i data-lucide="briefcase" class="w-3 h-3"></i>
+                                <span>FocusOn Interiors</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-center pt-2 text-[9px] font-semibold text-textMuted/70 gap-2">
+                            <span>✦ Turnkey Specialist</span>
+                            <span>✦ 6+ Years</span>
+                        </div>
+                    </div>
+
+                    <!-- BACK: Secure Corporate & QR Hub -->
+                    <div class="card-back absolute inset-0 w-full h-full bg-white rounded-2xl shadow-premium border border-gray-100/80 p-6 flex flex-col justify-between">
+                        <div class="flex justify-center">
+                            <img src="LOGO_FOCUS.png" alt="FocusOn" class="h-7 object-contain" onerror="this.src='https://placehold.co/240x64/D62828/white?text=FocusOn';">
+                        </div>
+                        <div class="flex flex-col items-center my-2">
+                            <div class="bg-brandLightGray p-3 rounded-2xl border border-gray-200/60 shadow-inner">
+                                <img id="dynamic-badge-qr" src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=https://www.focusoninteriors.com&color=d62828" alt="QR Directory" class="w-28 h-28 rounded-xl">
+                            </div>
+                            <span class="text-[9px] font-black text-brandRed uppercase tracking-widest mt-2">Digital Credential</span>
+                        </div>
+                        <div class="space-y-1.5 text-center border-t border-gray-100 pt-4">
+                            <div class="flex justify-center gap-2 text-[11px] font-medium text-textDark"><i data-lucide="mail" class="w-3.5 h-3.5 text-brandRed"></i> decorators@focusoninterior.in</div>
+                            <div class="flex justify-center gap-2 text-[11px] font-semibold text-textMuted"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-brandRed"></i> Gurgaon • Delhi • Mumbai • Bangalore</div>
+                            <div class="flex justify-center gap-2 text-[11px] font-bold text-brandRed">www.focusoninteriors.com</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- India-Centric Tagline + Executive Motto -->
+        <section class="px-5 py-1 text-center">
+            <div class="relative inline-block">
+                <span class="font-serif text-2xl text-brandRed/20 absolute -top-3 -left-3">“</span>
+                <p class="text-xs font-medium text-textDark/80 italic px-5 leading-relaxed">Delivering turnkey interiors across India with precision, integrity & world-class coordination.</p>
+                <span class="font-serif text-2xl text-brandRed/20 absolute -bottom-3 -right-3">”</span>
+            </div>
+        </section>
+
+        <!-- REPLACEMENT: INDIA PREMIER NETWORK + SOCIAL MEDIA (Actual Icons) -->
+        <section class="px-5 py-3">
+            <div class="bg-gradient-to-br from-white to-gray-50/80 rounded-2xl p-4 border border-gray-200/60 shadow-sm">
+                <div class="flex items-center justify-between flex-wrap gap-2 mb-3">
+                    <div class="flex items-center gap-1.5">
+                        <i data-lucide="indian-rupee" class="w-4 h-4 text-brandRed"></i>
+                        <span class="text-[10px] font-black text-textDark uppercase tracking-wider">🇮🇳 Pan-India Excellence</span>
+                    </div>
+                    <div class="bg-brandRed/10 rounded-full px-2 py-0.5"><span class="text-[9px] font-bold text-brandRed">4 Metro Hubs</span></div>
+                </div>
+                <div class="grid grid-cols-4 gap-1 text-center mb-4">
+                    <div class="bg-white rounded-xl py-1.5 shadow-sm"><span class="text-[11px] font-black text-brandRed">Delhi NCR</span></div>
+                    <div class="bg-white rounded-xl py-1.5 shadow-sm"><span class="text-[11px] font-black text-brandRed">Gurgaon</span></div>
+                    <div class="bg-white rounded-xl py-1.5 shadow-sm"><span class="text-[11px] font-black text-brandRed">Mumbai</span></div>
+                    <div class="bg-white rounded-xl py-1.5 shadow-sm"><span class="text-[11px] font-black text-brandRed">Bangalore</span></div>
+                </div>
+                <div class="flex items-center justify-between border-t border-gray-100 pt-3 mt-1">
+                    <span class="text-[9px] font-bold uppercase text-textMuted tracking-wider">Official Connect</span>
+                    <div class="flex gap-3">
+                        <!-- Actual Social Media Brand Icons using FontAwesome (Authentic Logos) -->
+                        <a href="https://linkedin.com/company/focusoninteriors" target="_blank" class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white transition-all duration-200 border border-gray-200">
+                            <i class="fab fa-linkedin-in text-sm"></i>
+                        </a>
+                        <a href="https://instagram.com/focusoninteriors" target="_blank" class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-[#E4405F] hover:bg-[#E4405F] hover:text-white transition-all duration-200 border border-gray-200">
+                            <i class="fab fa-instagram text-sm"></i>
+                        </a>
+                        <a href="https://facebook.com/focusoninteriors" target="_blank" class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-[#1877F2] hover:bg-[#1877F2] hover:text-white transition-all duration-200 border border-gray-200">
+                            <i class="fab fa-facebook-f text-sm"></i>
+                        </a>
+                        <a href="https://twitter.com/focusonindia" target="_blank" class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-[#1DA1F2] hover:bg-black hover:text-white transition-all duration-200 border border-gray-200">
+                            <i class="fab fa-twitter text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                <p class="text-[9px] text-center text-textMuted/70 mt-3 tracking-wide">Serving India's leading corporates with innovative interior ecosystems</p>
+            </div>
+        </section>
+
+        <!-- QUICK ACTION BUTTONS (vCard, Call, WhatsApp, Mail, Website) -->
+        <section class="px-5 py-2">
+            <button onclick="downloadVCard()" class="w-full bg-brandRed hover:bg-brandRedDark active:scale-[0.97] text-white font-extrabold py-3.5 rounded-xl shadow-buttonShadow transition-all flex items-center justify-center gap-2 text-xs uppercase tracking-wider mb-3">
+                <i data-lucide="contact" class="w-4 h-4"></i> Save Contact (vCard)
+            </button>
+            <div class="grid grid-cols-2 gap-2.5">
+                <a href="tel:+918448345714" class="bg-white hover:bg-gray-50 border border-gray-200 text-textDark font-bold py-3 px-3 rounded-xl shadow-sm flex items-center gap-2 text-[11px] uppercase tracking-wide transition-all"><span class="p-1 rounded-lg bg-red-50 text-brandRed"><i data-lucide="phone-call" class="w-4 h-4"></i></span> Call Now</a>
+                <a href="https://wa.me/918448345714?text=Hello%20Roushan,%20I%20saw%20your%20FocusOn%20Interiors%20profile%20and%20need%20expert%20consultation." target="_blank" class="bg-white hover:bg-gray-50 border border-gray-200 font-bold py-3 px-3 rounded-xl flex items-center gap-2 text-[11px] uppercase tracking-wide"><span class="p-1 rounded-lg bg-green-50 text-green-600"><i data-lucide="message-square" class="w-4 h-4"></i></span> WhatsApp</a>
+                <a href="mailto:decorators@focusoninterior.in?subject=Corporate%20Interior%20Inquiry%20-%20India%20Project" class="bg-white hover:bg-gray-50 border border-gray-200 font-bold py-3 px-3 rounded-xl flex items-center gap-2 text-[11px] uppercase tracking-wide"><span class="p-1 rounded-lg bg-brandLightGray text-brandRed"><i data-lucide="mail" class="w-4 h-4"></i></span> Email</a>
+                <a href="http://www.focusoninteriors.com" target="_blank" class="bg-white hover:bg-gray-50 border border-gray-200 font-bold py-3 px-3 rounded-xl flex items-center gap-2 text-[11px] uppercase tracking-wide"><span class="p-1 rounded-lg bg-brandLightGray text-brandRed"><i data-lucide="globe" class="w-4 h-4"></i></span> Website</a>
+            </div>
+        </section>
+
+        <!-- EXECUTIVE BIO + ACHIEVEMENTS -->
+        <section class="px-5 py-2">
+            <div class="bg-white border border-gray-100 rounded-2xl p-5 shadow-md relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brandRed to-brandYellow"></div>
+                <h3 class="text-xs font-black uppercase tracking-wider flex items-center gap-2 mb-3"><span class="w-1.5 h-3.5 bg-brandRed rounded-full"></span> About Roushan Kumar</h3>
+                <p class="text-[11.5px] leading-relaxed text-textMuted font-medium">Senior Project Coordinator at <strong>FocusOn Interiors</strong> handling high-scale commercial and corporate projects across India. Expertise in vendor ecosystem, turnkey execution, site safety, client liaison, and delivery excellence.</p>
+                <div class="grid grid-cols-3 gap-2 mt-5 pt-3 border-t border-gray-100 text-center">
+                    <div><span class="block text-lg font-black text-brandRed">98%</span><span class="text-[8px] font-bold text-textMuted">ON‑TIME DELIVERY</span></div>
+                    <div><span class="block text-lg font-black text-brandRed">150+</span><span class="text-[8px] font-bold text-textMuted">VENDOR PARTNERS</span></div>
+                    <div><span class="block text-lg font-black text-brandRed">0</span><span class="text-[8px] font-bold text-textMuted">SAFETY INCIDENTS</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CORPORATE ECOSYSTEM + CORE STRENGTHS -->
+        <section class="px-5 py-2">
+            <div class="bg-white border border-gray-100 rounded-2xl p-5 shadow-md">
+                <div class="flex items-center gap-2 mb-3"><div class="p-1.5 bg-brandLightGray rounded-lg text-brandRed"><i data-lucide="building-2" class="w-4 h-4"></i></div><div><span class="text-[8px] font-extrabold tracking-widest text-brandRed">COMPANY DNA</span><h3 class="text-xs font-black">FocusOn Interiors</h3></div></div>
+                <p class="text-[11px] text-textMuted leading-relaxed mb-3">India's leading interior solutions provider — crafting innovative workspaces, retail environments, and corporate headquarters with turnkey project management & visionary design.</p>
+                <div class="grid grid-cols-2 gap-x-2 gap-y-1.5 mt-1"><div class="flex items-center gap-1.5 text-[10px] text-textMuted"><span class="w-1.5 h-1.5 rounded-full bg-brandRed"></span>Turnkey Solutions</div><div class="flex items-center gap-1.5 text-[10px] text-textMuted"><span class="w-1.5 h-1.5 rounded-full bg-brandRed"></span>Corporate Interiors</div><div class="flex items-center gap-1.5 text-[10px] text-textMuted"><span class="w-1.5 h-1.5 rounded-full bg-brandRed"></span>Commercial Fit-Outs</div><div class="flex items-center gap-1.5 text-[10px] text-textMuted"><span class="w-1.5 h-1.5 rounded-full bg-brandRed"></span>Retail Development</div><div class="flex items-center gap-1.5 text-[10px] text-textMuted"><span class="w-1.5 h-1.5 rounded-full bg-brandRed"></span>Space Planning</div><div class="flex items-center gap-1.5 text-[10px] text-textMuted"><span class="w-1.5 h-1.5 rounded-full bg-brandRed"></span>Project Management</div></div>
+            </div>
+        </section>
+
+        <!-- SERVICE GRID (India Focus) -->
+        <section class="px-5 py-2">
+            <div class="mb-3"><span class="text-[8px] font-extrabold tracking-widest text-brandRed">EXPERTISE COVERAGE</span><h3 class="text-xs font-black flex items-center gap-1.5"><span class="w-1 h-3.5 bg-brandRed rounded-full"></span>Core Professional Services</h3></div>
+            <div class="grid grid-cols-2 gap-2.5">
+                <div class="bg-white border border-gray-100 rounded-xl p-3 hover:border-brandRed/30 transition-all"><div class="text-brandRed mb-1.5"><i data-lucide="building" class="w-4 h-4"></i></div><h4 class="text-[11px] font-extrabold">Corporate Interiors</h4><p class="text-[9px] text-textMuted">Productive, scalable offices</p></div>
+                <div class="bg-white border border-gray-100 rounded-xl p-3 hover:border-brandRed/30 transition-all"><div class="text-brandRed mb-1.5"><i data-lucide="layers" class="w-4 h-4"></i></div><h4 class="text-[11px] font-extrabold">Office Fit-Outs</h4><p class="text-[9px] text-textMuted">Premium installation</p></div>
+                <div class="bg-white border border-gray-100 rounded-xl p-3 hover:border-brandRed/30 transition-all"><div class="text-brandRed mb-1.5"><i data-lucide="check-square" class="w-4 h-4"></i></div><h4 class="text-[11px] font-extrabold">Turnkey Projects</h4><p class="text-[9px] text-textMuted">End-to-end delivery</p></div>
+                <div class="bg-white border border-gray-100 rounded-xl p-3 hover:border-brandRed/30 transition-all"><div class="text-brandRed mb-1.5"><i data-lucide="shopping-bag" class="w-4 h-4"></i></div><h4 class="text-[11px] font-extrabold">Retail Interiors</h4><p class="text-[9px] text-textMuted">Brand-led experience</p></div>
+            </div>
+        </section>
+
+        <!-- PROJECT GALLERY (Premium Visuals) -->
+        <section class="px-5 py-2">
+            <div class="mb-2"><span class="text-[8px] font-extrabold tracking-widest text-brandRed">PORTFOLIO HIGHLIGHTS</span><h3 class="text-xs font-black flex items-center gap-1.5"><span class="w-1 h-3.5 bg-brandRed rounded-full"></span>Project Gallery</h3></div>
+            <div class="grid grid-cols-2 gap-2.5">
+                <div onclick="openGalleryLightbox(0)" class="relative group aspect-square rounded-xl overflow-hidden cursor-pointer shadow-sm"><img src="https://focusoninteriors.com/wp-content/uploads/2025/12/11.png.webp?auto=format&fit=crop&q=80&w=300" class="w-full h-full object-cover group-hover:scale-105 transition-transform"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent p-2 flex items-end"><span class="text-[9px] font-bold text-white">L&T Mahape</span></div></div>
+                <div onclick="openGalleryLightbox(1)" class="relative group aspect-square rounded-xl overflow-hidden cursor-pointer shadow-sm"><img src="https://focusoninteriors.com/wp-content/uploads/2026/05/Luminous25-scaled.jpg.webp?auto=format&fit=crop&q=80&w=300" class="w-full h-full object-cover group-hover:scale-105 transition-transform"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent p-2 flex items-end"><span class="text-[9px] font-bold text-white">Luminous Haridwar</span></div></div>
+                <div onclick="openGalleryLightbox(2)" class="relative group aspect-square rounded-xl overflow-hidden cursor-pointer shadow-sm"><img src="https://focusoninteriors.com/wp-content/uploads/2026/05/DSC_9098-HDR-scaled.webp?auto=format&fit=crop&q=80&w=300" class="w-full h-full object-cover group-hover:scale-105 transition-transform"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent p-2 flex items-end"><span class="text-[9px] font-bold text-white">Centricity Gurgaon</span></div></div>
+            </div>
+        </section>
+
+        <!-- REGIONAL OFFICE HUB SELECTOR (Dynamic) -->
+        <section class="px-5 py-2 pb-3">
+            <div class="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm">
+                <div class="flex gap-2 items-center mb-2"><i data-lucide="map-pin" class="w-4 h-4 text-brandRed"></i><span class="text-[9px] font-black text-textDark uppercase tracking-wider">OPERATIONAL HEADQUARTERS</span></div>
+                <div class="grid grid-cols-4 gap-1 p-1 bg-gray-100 rounded-xl mb-3">
+                    <button onclick="changeActiveHub('delhi')" id="hub-delhi" class="hub-control py-2 text-[10px] font-black rounded-lg transition bg-white text-brandRed shadow-sm">Delhi</button>
+                    <button onclick="changeActiveHub('gurgaon')" id="hub-gurgaon" class="hub-control py-2 text-[10px] font-black rounded-lg text-textMuted">Gurgaon</button>
+                    <button onclick="changeActiveHub('bangalore')" id="hub-bangalore" class="hub-control py-2 text-[10px] font-black rounded-lg text-textMuted">Bangalore</button>
+                    <button onclick="changeActiveHub('mumbai')" id="hub-mumbai" class="hub-control py-2 text-[10px] font-black rounded-lg text-textMuted">Mumbai</button>
+                </div>
+                <div class="p-3 bg-brandLightGray rounded-xl min-h-[65px] flex items-center"><p id="hub-address-output" class="text-[11px] text-textMuted leading-relaxed font-medium"><strong class="text-textDark">Delhi Office Hub:</strong> Okhla Phase III, Business Central, New Delhi - 110020, India.</p></div>
+            </div>
+        </section>
+
+        <!-- FOOTER (Refined) -->
+        <footer class="mt-3 px-5 py-6 border-t border-gray-100 bg-white text-center">
+            <img src="LOGO_FOCUS.png" class="h-7 mx-auto opacity-80 mb-2" onerror="this.src='https://placehold.co/240x64/D62828/white?text=FocusOn';">
+            <p class="text-[9px] font-bold text-textDark">“Transforming Indian Workspaces, One Project at a Time”</p>
+            <p class="text-[9px] text-gray-400 mt-1">FocusOn Interiors © 2026 — India’s Trusted Interior Partner</p>
+        </footer>
+
+        <!-- STICKY MOBILE ACTION BAR (Improved) -->
+        <div class="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-lg border-t border-gray-200 px-4 py-2 flex gap-2 justify-around items-center max-w-md mx-auto shadow-[0_-8px_25px_-5px_rgba(0,0,0,0.05)]">
+            <a href="tel:+918448345714" class="flex flex-col items-center gap-0.5 text-textMuted"><div class="p-1.5 rounded-full bg-red-50 text-brandRed"><i data-lucide="phone" class="w-4 h-4"></i></div><span class="text-[9px] font-bold">Call</span></a>
+            <a href="https://wa.me/918448345714" target="_blank" class="flex flex-col items-center gap-0.5 text-textMuted"><div class="p-1.5 rounded-full bg-green-50 text-green-600"><i data-lucide="message-square" class="w-4 h-4"></i></div><span class="text-[9px] font-bold">WhatsApp</span></a>
+            <button onclick="downloadVCard()" class="flex-1 bg-brandRed text-white py-2 rounded-xl font-bold text-[11px] flex items-center justify-center gap-1 shadow-md"><i data-lucide="user-plus" class="w-3.5 h-3.5"></i> Save Contact</button>
+            <button onclick="openShareModal()" class="flex flex-col items-center gap-0.5 text-textMuted"><div class="p-1.5 rounded-full bg-gray-100 text-brandRed"><i data-lucide="share" class="w-4 h-4"></i></div><span class="text-[9px] font-bold">Share</span></button>
+        </div>
+    </div>
+
+    <!-- MODALS : QR, SHARE, LIGHTBOX (same advanced functions) -->
+    <!-- Qr Modal, Share Modal, Gallery Lightbox exactly as before but streamlined -->
+    <div id="qrModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4"><div class="bg-white rounded-3xl p-5 max-w-xs w-full text-center"><button onclick="closeQrModal()" class="float-right"><i data-lucide="x" class="w-5 h-5"></i></button><img src="LOGO_FOCUS.png" class="h-8 mx-auto mb-2"><h3 class="font-bold">Roushan Kumar</h3><div class="bg-gray-100 p-3 rounded-2xl my-3"><img id="modal-qr-img" class="w-36 h-36 mx-auto"></div><button onclick="closeQrModal()" class="bg-gray-200 w-full py-2 rounded-xl text-xs font-bold">Close</button></div></div>
+    <div id="shareModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4"><div class="bg-white rounded-3xl p-5 w-full max-w-xs"><div class="flex justify-between"><h3 class="font-black text-sm">Share Profile</h3><button onclick="closeShareModal()"><i data-lucide="x" class="w-5 h-5"></i></button></div><button onclick="copyProfileLink()" class="flex justify-between w-full mt-3 p-3 bg-gray-50 rounded-xl"><span>Copy Link</span><i data-lucide="copy"></i></button><a id="share-whatsapp-link" href="#" target="_blank" class="flex mt-2 p-3 bg-gray-50 rounded-xl justify-between"><span>WhatsApp</span><i class="fab fa-whatsapp text-green-600"></i></a><a id="share-email-link" href="#" class="flex mt-2 p-3 bg-gray-50 rounded-xl justify-between"><span>Email</span><i data-lucide="mail"></i></a></div></div>
+    <div id="galleryLightbox" class="fixed inset-0 z-50 bg-black/95 hidden flex-col justify-between p-4"><div class="flex justify-between text-white"><span id="lightbox-index-display"></span><button onclick="closeGalleryLightbox()"><i data-lucide="x" class="w-6 h-6"></i></button></div><div class="flex-1 flex items-center justify-center"><button onclick="moveGalleryCursor(-1)" class="absolute left-2 p-2 bg-white/20 rounded-full"><i data-lucide="chevron-left"></i></button><img id="lightbox-main-img" class="max-h-[55vh] rounded-2xl"><button onclick="moveGalleryCursor(1)" class="absolute right-2 p-2 bg-white/20 rounded-full"><i data-lucide="chevron-right"></i></button></div><div class="text-white text-center p-3"><span id="lightbox-tag-display" class="text-brandYellow text-[10px]"></span><h4 id="lightbox-title-display"></h4><p id="lightbox-desc-display" class="text-xs"></p></div></div>
+    <div id="slideToast" class="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 transform translate-y-24 opacity-0 transition-all duration-300 bg-textDark text-white px-4 py-2 rounded-xl text-xs flex gap-2 pointer-events-none"><i data-lucide="check-circle" class="w-4 h-4"></i><span id="toast-text-display"></span></div>
+
+    <script>
+        // Initialize Lucide, set global vars, gallery, vCard, hub switcher
+        let galleryIndex = 0;
+        const projects = [
+            {img:"https://focusoninteriors.com/wp-content/uploads/2025/12/11.png.webp", tag:"L&T Mahape Mumbai", title:"Dynamic Collaborative Workspace & Lounge", desc:"A vibrant, open-plan office featuring flexible breakout seating, industrial-chic blue exposed ductwork, and biophilic green accents designed to foster creativity and team collaboration."},
+            {img:"https://focusoninteriors.com/wp-content/uploads/2026/05/Luminous25-scaled.jpg.webp", tag:"Luminous-Haridwar", title:"Branded Experience Center Entrance", desc:"A modern reception zone utilizing bold corporate colors, a circular backlit logo wall, and a striking traditional-meets-modern geometric wall art piece to create a memorable first impression for visitors."},
+            {img:"https://focusoninteriors.com/wp-content/uploads/2026/05/DSC_9098-HDR-scaled.webp", tag:"CentrCity - Gurgaon", title:"Premium Corporate Reception & Executive Lounge", desc:"An upscale corporate entrance featuring a curved minimalist reception desk, warm backlit frosted glass branding, and a cozy waiting lounge anchored by a custom wooden backlit map installation that exudes exclusivity."},
+        ];
+        window.addEventListener('load',()=>{lucide.createIcons(); let url=window.location.href; document.getElementById('dynamic-badge-qr').src=`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(url)}&color=d62828`; document.getElementById('modal-qr-img').src=`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(url)}&color=d62828`; document.getElementById('share-whatsapp-link').href=`https://api.whatsapp.com/send?text=View%20Roushan%20Kumar's%20Profile%20${encodeURIComponent(url)}`; document.getElementById('share-email-link').href=`mailto:?subject=Roushan%20Kumar%20Business%20Card&body=${encodeURIComponent(url)}`;});
+        function toggleCardOrientation(){ document.getElementById('badgeCard').classList.toggle('flipped'); }
+        function downloadVCard(){ const vcf=`BEGIN:VCARD\nVERSION:3.0\nN:Kumar;Roushan\nFN:Roushan Kumar\nORG:FocusOn Interiors\nTITLE:Project Coordinator\nTEL:+919876543210\nEMAIL:decorators@focusoninterior.in\nURL:https://focusoninteriors.com\nEND:VCARD`; const blob=new Blob([vcf],{type:"text/vcard"}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download="Roushan_FocusOn.vcf"; a.click(); showToast("vCard saved!","download"); }
+        function showToast(msg,icon){ let t=document.getElementById('slideToast'); document.getElementById('toast-text-display').innerText=msg; t.classList.remove('translate-y-24','opacity-0'); t.classList.add('translate-y-0','opacity-100'); setTimeout(()=>{ t.classList.remove('translate-y-0','opacity-100'); t.classList.add('translate-y-24','opacity-0'); },2500);}
+        function openGalleryLightbox(i){ galleryIndex=i; updateLightbox(); document.getElementById('galleryLightbox').classList.remove('hidden'); document.body.style.overflow='hidden';}
+        function closeGalleryLightbox(){ document.getElementById('galleryLightbox').classList.add('hidden'); document.body.style.overflow='';}
+        function moveGalleryCursor(d){ galleryIndex+=d; if(galleryIndex>=projects.length) galleryIndex=0; if(galleryIndex<0) galleryIndex=projects.length-1; updateLightbox();}
+        function updateLightbox(){ let p=projects[galleryIndex]; document.getElementById('lightbox-main-img').src=p.img; document.getElementById('lightbox-tag-display').innerText=p.tag; document.getElementById('lightbox-title-display').innerText=p.title; document.getElementById('lightbox-desc-display').innerText=p.desc; document.getElementById('lightbox-index-display').innerText=`${galleryIndex+1}/${projects.length}`;}
+        function openQrModal(){ document.getElementById('qrModal').classList.remove('hidden');}
+        function closeQrModal(){ document.getElementById('qrModal').classList.add('hidden');}
+        function openShareModal(){ document.getElementById('shareModal').classList.remove('hidden');}
+        function closeShareModal(){ document.getElementById('shareModal').classList.add('hidden');}
+        function copyProfileLink(){ navigator.clipboard.writeText(window.location.href); showToast("Profile link copied!","link"); closeShareModal();}
+        const hubs={delhi:"Delhi Office Hub: Okhla Phase III, Business Central, New Delhi - 110020, India.", gurgaon:"Gurgaon Regional HQ: Sector 45, Cyber City, Millennium Plaza, Gurgaon - 122003.", bangalore:"Bangalore Hub: Indiranagar 100 Ft Rd, Block B, Bangalore - 560038.", mumbai:"Mumbai Office: Bandra Kurla Complex, Signature Highrise, Mumbai - 400051."};
+        function changeActiveHub(city){ document.querySelectorAll('.hub-control').forEach(btn=>{btn.classList.remove('bg-white','text-brandRed','shadow-sm'); btn.classList.add('text-textMuted');}); let target=document.getElementById(`hub-${city}`); if(target){target.classList.remove('text-textMuted'); target.classList.add('bg-white','text-brandRed','shadow-sm');} let out=document.getElementById('hub-address-output'); out.style.opacity=0; setTimeout(()=>{out.innerHTML=`<strong class="text-textDark">${city.charAt(0).toUpperCase()+city.slice(1)} Hub:</strong> ${hubs[city]}`; out.style.opacity=1;},150);}
+        window.changeActiveHub = changeActiveHub;
+    </script>
+</body>
+</html>
