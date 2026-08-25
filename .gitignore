@@ -1,0 +1,8 @@
+# Node modules are a dev-only dependency of the test harness
+node_modules/
+
+# Screenshots produced by saarthi-src/layout.js
+saarthi-preview/_shots/
+
+# Python caches
+__pycache__/

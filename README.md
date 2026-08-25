@@ -22,5 +22,30 @@ python3 -m http.server 8080
 # open http://localhost:8080
 ```
 
+---
+
+# Blogger themes
+
+This repo also holds two complete, upload-ready Blogger themes.
+
+| File | Description | Docs |
+|---|---|---|
+| `saarthi-blogger-theme.xml` | **Saarthi** — original light editorial theme: responsive, SEO + JSON-LD, accessible, AdSense-ready, no jQuery, no dark mode | [SAARTHI-THEME-GUIDE.md](SAARTHI-THEME-GUIDE.md) |
+| `sidh-style-blogger-theme.xml` | Earlier GIGW-style portal theme (tricolour strip, dark mode, text-size/contrast controls) | [BLOGGER-THEME-GUIDE.md](BLOGGER-THEME-GUIDE.md) |
+
+Upload either file via Blogger → **Theme → ⋮ → Restore → Upload**.
+
+Saarthi is built from source and verified headlessly:
+
+```bash
+bash saarthi-src/check.sh
+```
+
+That rebuilds `saarthi-blogger-theme.xml`, validates its Blogger structure
+(unique section/widget ids, real gadget types, every `b:include` resolving),
+audits the CSS for overflow risk and WCAG AA contrast, and executes the real
+`theme.js` against a preview generated from the same skeleton (56 runtime
+checks).
+
 ## Deploy (GitHub Pages)
 Push the repo, then: Repository Settings → Pages → Branch: `main`, folder `/ (root)`.

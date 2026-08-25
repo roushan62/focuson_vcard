@@ -1,0 +1,1051 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:version='2' class='v2' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+
+  <!-- ==================================================================
+       SAARTHI — Blogger theme (light, editorial, AdSense-ready)
+
+       HOW TO CUSTOMISE (three clearly marked areas)
+       1. COLOURS / WIDTH / RADIUS ....... Theme > Customize > Advanced
+          (driven by the <Variable> tags at the top of b:skin)
+       2. MENU, LINKS, ADS, SOCIAL, COPY . Blogger > Layout  (gadgets)
+       3. BEHAVIOUR FLAGS ................ the CFG object in the script
+          at the bottom of this file
+
+       SETUP NOTES
+       - Settings > Meta tags > Description: switch ON. Blogger emits the
+         <meta name="description"> and the <link rel="canonical"> itself
+         through all-head-content, so this theme deliberately does not
+         print them a second time.
+       - Settings > Comments > Comment location: Embedded.
+       - Theme > (three dots) > Mobile settings: choose "Desktop" so this
+         responsive layout is used on phones too.
+       - Use a Jump Break in long posts: it also shortens the excerpt the
+         homepage cards show.
+       ================================================================== -->
+
+  <meta content='width=device-width, initial-scale=1' name='viewport'/>
+  <meta content='#0d5f57' name='theme-color'/>
+
+  <!-- ================= SEO: TITLE ================= -->
+  <b:if cond='data:blog.pageType == &quot;item&quot;'>
+    <title><data:blog.pageName/> | <data:blog.title/></title>
+  <b:else/>
+    <b:if cond='data:blog.pageType == &quot;static_page&quot;'>
+      <title><data:blog.pageName/> | <data:blog.title/></title>
+    <b:else/>
+      <b:if cond='data:blog.searchLabel'>
+        <title><data:blog.searchLabel/> — Topics | <data:blog.title/></title>
+      <b:else/>
+        <b:if cond='data:blog.searchQuery'>
+          <title>Search: <data:blog.searchQuery/> | <data:blog.title/></title>
+        <b:else/>
+          <b:if cond='data:blog.pageType == &quot;error_page&quot;'>
+            <title>Page not found | <data:blog.title/></title>
+          <b:else/>
+            <title><data:blog.pageTitle/></title>
+          </b:if>
+        </b:if>
+      </b:if>
+    </b:if>
+  </b:if>
+
+  <!-- Blogger's own head block: charset, canonical URL, feed links,
+       favicon, description meta. Do not duplicate these below. -->
+  <b:include data='blog' name='all-head-content'/>
+
+  <!-- ================= SEO: OPEN GRAPH / TWITTER ================= -->
+  <meta expr:content='data:blog.pageTitle' property='og:title'/>
+  <meta expr:content='data:blog.title' property='og:site_name'/>
+  <meta expr:content='data:blog.url' property='og:url'/>
+  <meta expr:content='data:blog.locale' property='og:locale'/>
+  <b:if cond='data:blog.metaDescription'>
+    <meta expr:content='data:blog.metaDescription' property='og:description'/>
+    <meta expr:content='data:blog.metaDescription' name='twitter:description'/>
+  </b:if>
+  <b:if cond='data:blog.pageType == &quot;item&quot;'>
+    <meta content='article' property='og:type'/>
+  <b:else/>
+    <meta content='website' property='og:type'/>
+  </b:if>
+  <b:if cond='data:blog.postImageUrl'>
+    <meta content='summary_large_image' name='twitter:card'/>
+    <meta expr:content='data:blog.postImageUrl' property='og:image'/>
+    <meta expr:content='data:blog.postImageUrl' name='twitter:image'/>
+  <b:else/>
+    <meta content='summary' name='twitter:card'/>
+  </b:if>
+  <meta expr:content='data:blog.pageTitle' name='twitter:title'/>
+
+  <!-- ================= SEO: ROBOTS =================
+       Search, archive and error pages are duplicate-ish views: keep them
+       out of the index but let the links inside them be followed. -->
+  <b:if cond='data:blog.pageType == &quot;archive&quot; or data:blog.searchQuery or data:blog.pageType == &quot;error_page&quot;'>
+    <meta content='noindex, follow' name='robots'/>
+  </b:if>
+
+  <!-- ================= FONTS =================
+       Only the Devanagari family is fetched, and only for pages that
+       actually contain Devanagari text (unicode-range). English-only
+       blogs download nothing and render in the system UI font.
+       Delete these three lines to go fully self-hosted / system-only. -->
+  <link href='https://fonts.googleapis.com' rel='preconnect'/>
+  <link crossorigin='anonymous' href='https://fonts.gstatic.com' rel='preconnect'/>
+  <link href='https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&amp;display=swap' rel='stylesheet'/>
+
+  <!-- ================= DESIGN SYSTEM ================= -->
+  <b:skin><![CDATA[
+@@CSS@@
+]]></b:skin>
+
+  <!-- No-JavaScript fallback: the off-canvas menu becomes a plain inline
+       menu and the header search field stays visible on small screens,
+       so navigation and search still work with scripting disabled. -->
+  <noscript>
+    <style type='text/css'>
+      @media (max-width: 899px) {
+        .st-navtoggle { display: none; }
+        .st-nav__in { flex-direction: column; align-items: stretch; padding-block: 6px 10px; }
+        .st-drawer {
+          position: static;
+          visibility: visible;
+          transform: none;
+          width: auto;
+          max-width: none;
+          padding: 0;
+          background: transparent;
+          box-shadow: none;
+          overflow: visible;
+        }
+        .st-drawer__close,
+        .st-drawer__search { display: none; }
+        #navigation ul { flex-direction: column; align-items: stretch; gap: 0; }
+        #navigation ul a { min-height: 42px; }
+        .st-searchform { display: block; flex: 1 1 100%; order: 3; margin-top: 10px; }
+        .st-header__in { flex-wrap: wrap; }
+        .st-totop { display: none; }
+      }
+    </style>
+  </noscript>
+
+</head>
+
+<body expr:class='data:blog.pageType + &quot; st-body&quot;' expr:data-home='data:blog.homepageUrl' expr:data-pagetype='data:blog.pageType'>
+
+  <a class='st-skip' href='#st-main'>Skip to main content</a>
+
+  <!-- Reading progress (article pages only; hidden for reduced motion) -->
+  <div aria-hidden='true' class='st-progress'><span class='st-progress__bar' id='st-progress-bar'/></div>
+
+  <!-- ================= UTILITY BAR ================= -->
+  <div class='st-utility'>
+    <div class='st-container st-utility__in'>
+      <div class='st-utility__left'>
+        <span class='st-utility__date' id='st-today'/>
+        <div class='st-textsize'>
+          <span class='st-textsize__label' id='st-textsize-label'>Text size</span>
+          <button aria-describedby='st-textsize-label' aria-label='Decrease text size' id='st-fs-dec' type='button'>A&#8722;</button>
+          <button aria-describedby='st-textsize-label' aria-label='Reset text size' id='st-fs-reset' type='button'>A</button>
+          <button aria-describedby='st-textsize-label' aria-label='Increase text size' id='st-fs-inc' type='button'>A+</button>
+        </div>
+      </div>
+      <div class='st-utility__right'>
+        <!-- CUSTOMIZATION AREA: Layout > Utility Links -->
+        <b:section class='st-utility-links' id='utility' maxwidgets='1' showaddelement='yes'>
+          <b:widget id='LinkList2' locked='false' title='' type='LinkList'>
+            <b:widget-settings>
+              <b:widget-setting name='sorting'>NONE</b:widget-setting>
+              <b:widget-setting name='text-0'>About</b:widget-setting>
+              <b:widget-setting name='link-0'>/p/about.html</b:widget-setting>
+              <b:widget-setting name='text-1'>Contact</b:widget-setting>
+              <b:widget-setting name='link-1'>/p/contact.html</b:widget-setting>
+              <b:widget-setting name='text-2'>Privacy Policy</b:widget-setting>
+              <b:widget-setting name='link-2'>/p/privacy-policy.html</b:widget-setting>
+            </b:widget-settings>
+          </b:widget>
+        </b:section>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= HEADER ================= -->
+  <header class='st-header'>
+    <div class='st-container st-header__in'>
+
+      <!-- BLOGGER LIMITATION: the Header gadget renders the site name in an
+           <h1> on every page, and its markup cannot be changed without
+           replacing the gadget (which would also remove image-logo support).
+           So the homepage has exactly one <h1> (the site name) while inner
+           pages have two (site name + article/page title). This theme keeps
+           the gadget intact because that preserves the logo option in
+           Settings; multiple H1s are handled correctly by search engines.
+           To force a single H1 per page, delete the includables Blogger
+           generates inside Header1 and wrap the title in a b:if on
+           data:blog.url == data:blog.homepageUrl. -->
+      <div class='st-brand'>
+        <b:section id='header' maxwidgets='1' showaddelement='no'>
+          <b:widget id='Header1' locked='true' title='' type='Header'>
+            <b:widget-settings>
+              <b:widget-setting name='useImage'>false</b:widget-setting>
+            </b:widget-settings>
+          </b:widget>
+        </b:section>
+      </div>
+
+      <!-- Native Blogger search (real /search?q= query, not a filter) -->
+      <form class='st-searchform' expr:action='data:blog.homepageUrl + &quot;search&quot;' method='get' role='search'>
+        <label class='st-sr' for='st-header-search'>Search this site</label>
+        <div class='st-field'>
+          <input autocomplete='off' id='st-header-search' name='q' placeholder='Search articles, topics, guides' type='search'/>
+          <button aria-label='Search' type='submit'>
+            <svg aria-hidden='true' fill='none' height='18' stroke='currentColor' stroke-linecap='round' stroke-width='2.2' viewBox='0 0 24 24' width='18'><circle cx='11' cy='11' r='7'/><path d='M21 21l-4.35-4.35'/></svg>
+          </button>
+        </div>
+      </form>
+
+      <div class='st-header__actions'>
+        <button aria-label='Open search' class='st-iconbtn st-iconbtn--search' data-st-open='search' type='button'>
+          <svg aria-hidden='true' fill='none' height='20' stroke='currentColor' stroke-linecap='round' stroke-width='2.2' viewBox='0 0 24 24' width='20'><circle cx='11' cy='11' r='7'/><path d='M21 21l-4.35-4.35'/></svg>
+        </button>
+        <a class='st-btn st-btn--sm' href='#subscribe'>Subscribe</a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ================= NAVIGATION =================
+       CUSTOMIZATION AREA: Layout > Main Menu.
+       Submenus: prefix a link's TEXT with "- " (dash + space) and it is
+       nested under the link above it. Works with mouse, keyboard and tap. -->
+  <div class='st-nav'>
+    <div class='st-container st-nav__in'>
+      <button aria-controls='st-drawer' aria-expanded='false' aria-label='Open menu' class='st-navtoggle' id='st-navtoggle' type='button'>
+        <svg aria-hidden='true' fill='none' height='22' stroke='currentColor' stroke-linecap='round' stroke-width='2.2' viewBox='0 0 24 24' width='22'><path d='M3 6h18M3 12h18M3 18h18'/></svg>
+        <span>Menu</span>
+      </button>
+
+      <div aria-label='Site menu' class='st-drawer' id='st-drawer'>
+        <button class='st-drawer__close' id='st-drawer-close' type='button'>
+          <span>Menu</span>
+          <svg aria-hidden='true' fill='none' height='20' stroke='currentColor' stroke-linecap='round' stroke-width='2.2' viewBox='0 0 24 24' width='20'><path d='M6 6l12 12M18 6L6 18'/></svg>
+        </button>
+        <button class='st-drawer__search' data-st-open='search' type='button'>
+          <svg aria-hidden='true' fill='none' height='18' stroke='currentColor' stroke-linecap='round' stroke-width='2.2' viewBox='0 0 24 24' width='18'><circle cx='11' cy='11' r='7'/><path d='M21 21l-4.35-4.35'/></svg>
+          <span>Search this site</span>
+        </button>
+        <b:section id='navigation' maxwidgets='1' showaddelement='no'>
+          <b:widget id='LinkList1' locked='false' title='' type='LinkList'>
+            <b:widget-settings>
+              <b:widget-setting name='sorting'>NONE</b:widget-setting>
+              <b:widget-setting name='text-0'>Home</b:widget-setting>
+              <b:widget-setting name='link-0'>/</b:widget-setting>
+              <b:widget-setting name='text-1'>Latest Articles</b:widget-setting>
+              <b:widget-setting name='link-1'>/search</b:widget-setting>
+              <b:widget-setting name='text-2'>Browse Topics</b:widget-setting>
+              <b:widget-setting name='link-2'>/search</b:widget-setting>
+              <b:widget-setting name='text-3'>- Topic One</b:widget-setting>
+              <b:widget-setting name='link-3'>/search/label/Topic-One</b:widget-setting>
+              <b:widget-setting name='text-4'>- Topic Two</b:widget-setting>
+              <b:widget-setting name='link-4'>/search/label/Topic-Two</b:widget-setting>
+              <b:widget-setting name='text-5'>About</b:widget-setting>
+              <b:widget-setting name='link-5'>/p/about.html</b:widget-setting>
+              <b:widget-setting name='text-6'>Contact</b:widget-setting>
+              <b:widget-setting name='link-6'>/p/contact.html</b:widget-setting>
+            </b:widget-settings>
+          </b:widget>
+        </b:section>
+      </div>
+
+      <div class='st-nav__side'>
+        <a class='st-chip' href='/search'>All articles</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= ANNOUNCEMENT BAR =================
+       Optional. Delete the HTML gadget in Layout > Announcement and the
+       whole strip disappears (it takes no space when empty). -->
+  <div class='st-announce' id='st-announce'>
+    <div class='st-container st-announce__in'>
+      <div class='st-announce__body'>
+        <b:section id='announcement' maxwidgets='1' showaddelement='yes'>
+          <b:widget id='HTML1' locked='false' title='' type='HTML'>
+            <b:widget-settings>
+              <b:widget-setting name='content'>@@ANNOUNCE@@</b:widget-setting>
+            </b:widget-settings>
+          </b:widget>
+        </b:section>
+      </div>
+      <button aria-label='Dismiss announcement' class='st-announce__close' id='st-announce-close' type='button'>&#215;</button>
+    </div>
+  </div>
+
+  <!-- ================= AD SLOT: HEADER ================= -->
+  <div class='st-ad st-ad--header st-container'>
+    <b:section id='ad-header' showaddelement='yes'/>
+  </div>
+
+  <!-- ================= PAGE HEAD (label / search / archive) ================= -->
+  <b:if cond='data:blog.pageType == &quot;archive&quot; or data:blog.searchQuery or data:blog.searchLabel'>
+    <div class='st-pagehead'>
+      <div class='st-container st-pagehead__in'>
+        <nav aria-label='Breadcrumb'>
+          <ol class='st-crumbs'>
+            <li><a expr:href='data:blog.homepageUrl'>Home</a></li>
+            <li aria-hidden='true' class='st-crumbs__sep'>/</li>
+            <li aria-current='page'>
+              <b:if cond='data:blog.searchLabel'><data:blog.searchLabel/>
+              <b:else/>
+                <b:if cond='data:blog.searchQuery'>Search results<b:else/>Archive</b:if>
+              </b:if>
+            </li>
+          </ol>
+        </nav>
+        <h1>
+          <b:if cond='data:blog.searchLabel'><data:blog.searchLabel/>
+          <b:else/>
+            <b:if cond='data:blog.searchQuery'>Results for &#8220;<data:blog.searchQuery/>&#8221;<b:else/>Archive</b:if>
+          </b:if>
+        </h1>
+        <p>
+          <b:if cond='data:blog.searchLabel'>Everything filed under this topic.
+          <b:else/>
+            <b:if cond='data:blog.searchQuery'>Articles matching your search.
+            <b:else/>Browse older articles by month.</b:if>
+          </b:if>
+        </p>
+      </div>
+    </div>
+  </b:if>
+
+  <!-- ================= MAIN ================= -->
+  <main class='st-container st-main' id='st-main'>
+
+    <!-- ================= HOMEPAGE HERO ================= -->
+    <b:if cond='data:blog.url == data:blog.homepageUrl'>
+      <section aria-label='Introduction and most read' class='st-hero'>
+
+        <!-- CUSTOMIZATION AREA: Layout > Hero (write your own welcome copy) -->
+        <b:section id='hero' maxwidgets='1' showaddelement='yes'>
+          <b:widget id='HTML2' locked='false' title='' type='HTML'>
+            <b:widget-settings>
+              <b:widget-setting name='content'>@@HERO@@</b:widget-setting>
+            </b:widget-settings>
+          </b:widget>
+        </b:section>
+
+        <!-- Native Popular Posts gadget, restyled as a ranked list -->
+        <b:section id='hero-aside' maxwidgets='1' showaddelement='yes'>
+          <b:widget id='PopularPosts1' locked='false' title='Most read' type='PopularPosts'>
+            <b:widget-settings>
+              <b:widget-setting name='numItemsToShow'>5</b:widget-setting>
+              <b:widget-setting name='showThumbnails'>false</b:widget-setting>
+              <b:widget-setting name='showSnippets'>false</b:widget-setting>
+              <b:widget-setting name='timeRange'>LAST_MONTH</b:widget-setting>
+            </b:widget-settings>
+          </b:widget>
+        </b:section>
+
+      </section>
+
+      <!-- Optional featured rail. Populated from the blog's own feed for
+           the label set in CFG.featuredLabel; hidden when that label has
+           no posts. See the note next to the CFG object. -->
+      <section aria-label='Featured articles' class='st-feed-section' hidden='hidden' id='st-featured'>
+        <div class='st-sec-head'>
+          <div>
+            <p class='st-eyebrow'>Editor&#8217;s desk</p>
+            <h2>Featured</h2>
+          </div>
+        </div>
+      </section>
+
+      <!-- AD SLOT: between the hero and the latest articles -->
+      <div class='st-ad st-ad--mid'>
+        <b:section id='ad-mid' showaddelement='yes'/>
+      </div>
+    </b:if>
+
+    <!-- ================= CONTENT + SIDEBAR ================= -->
+    <div class='st-grid'>
+
+      <div class='st-content'>
+
+        <!-- AD SLOT: above the article on post pages -->
+        <b:if cond='data:blog.pageType == &quot;item&quot;'>
+          <div class='st-ad st-ad--article'>
+            <b:section id='ad-article' showaddelement='yes'/>
+          </div>
+        </b:if>
+
+        <b:section id='main' maxwidgets='1' showaddelement='no'>
+          <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog'>
+            <b:widget-settings>
+              <b:widget-setting name='showDateHeader'>false</b:widget-setting>
+              <b:widget-setting name='showAuthor'>true</b:widget-setting>
+              <b:widget-setting name='showTimestamp'>true</b:widget-setting>
+              <b:widget-setting name='showLabels'>true</b:widget-setting>
+              <b:widget-setting name='showCommentLink'>true</b:widget-setting>
+              <b:widget-setting name='showShareButtons'>false</b:widget-setting>
+              <b:widget-setting name='showReactions'>false</b:widget-setting>
+              <b:widget-setting name='showBacklinks'>false</b:widget-setting>
+              <b:widget-setting name='showLocation'>false</b:widget-setting>
+              <b:widget-setting name='showInlineAds'>false</b:widget-setting>
+              <b:widget-setting name='showAuthorProfile'>false</b:widget-setting>
+              <b:widget-setting name='postLabelsLabel'>Topics</b:widget-setting>
+              <b:widget-setting name='timestampLabel'/>
+            </b:widget-settings>
+
+            <!-- ============ BLOG: MAIN ROUTER ============ -->
+            <b:includable id='main' var='top'>
+              <b:if cond='data:blog.pageType == &quot;error_page&quot;'>
+                <b:include name='errorPage'/>
+              <b:else/>
+                <b:if cond='data:blog.pageType == &quot;item&quot;'>
+                  <b:loop values='data:posts' var='post'>
+                    <b:include data='post' name='postSingle'/>
+                  </b:loop>
+                <b:else/>
+                  <b:if cond='data:blog.pageType == &quot;static_page&quot;'>
+                    <b:loop values='data:posts' var='post'>
+                      <b:include data='post' name='postPage'/>
+                    </b:loop>
+                  <b:else/>
+                    <b:include name='status-message'/>
+                    <div class='st-feed'>
+                      <b:loop values='data:posts' var='post'>
+                        <b:if cond='data:post.isFirstPost and data:blog.url == data:blog.homepageUrl'>
+                          <b:include data='post' name='postLead'/>
+                        <b:else/>
+                          <b:include data='post' name='postCard'/>
+                        </b:if>
+                      </b:loop>
+                    </div>
+                    <b:include name='nextprev'/>
+                  </b:if>
+                </b:if>
+              </b:if>
+            </b:includable>
+
+            <!-- ============ CARD: LEAD / FEATURED ============ -->
+            <b:includable id='postLead' var='post'>
+              <article class='pcard pcard--lead hentry'>
+                <a class='pcard__media' expr:href='data:post.url' tabindex='-1'/>
+                <div class='pcard__body'>
+                  <b:if cond='data:post.labels'>
+                    <b:loop values='data:post.labels' var='label'>
+                      <b:if cond='data:label.isLast'>
+                        <a class='st-chip st-chip--accent pcard__cat' expr:href='data:label.url'><data:label.name/></a>
+                      </b:if>
+                    </b:loop>
+                  </b:if>
+                  <h2 class='pcard__title entry-title'>
+                    <a expr:href='data:post.url' rel='bookmark'><data:post.title/></a>
+                  </h2>
+                  <div class='pcard__excerpt entry-summary'><data:post.body/></div>
+                  <div class='pcard__foot'>
+                    <b:include data='post' name='postMeta'/>
+                    <a class='pcard__more' expr:href='data:post.url'>Read the story</a>
+                  </div>
+                </div>
+              </article>
+            </b:includable>
+
+            <!-- ============ CARD: STANDARD ============ -->
+            <b:includable id='postCard' var='post'>
+              <article class='pcard hentry'>
+                <a class='pcard__media' expr:href='data:post.url' tabindex='-1'/>
+                <div class='pcard__body'>
+                  <b:if cond='data:post.labels'>
+                    <b:loop values='data:post.labels' var='label'>
+                      <b:if cond='data:label.isLast'>
+                        <a class='st-chip pcard__cat' expr:href='data:label.url'><data:label.name/></a>
+                      </b:if>
+                    </b:loop>
+                  </b:if>
+                  <h2 class='pcard__title entry-title'>
+                    <a expr:href='data:post.url' rel='bookmark'><data:post.title/></a>
+                  </h2>
+                  <div class='pcard__excerpt entry-summary'><data:post.body/></div>
+                  <div class='pcard__foot'>
+                    <b:include data='post' name='postMeta'/>
+                    <a class='pcard__more' expr:href='data:post.url'>Read</a>
+                  </div>
+                </div>
+              </article>
+            </b:includable>
+
+            <!-- ============ SHARED: CARD META ROW ============ -->
+            <b:includable id='postMeta' var='post'>
+              <p class='st-meta'>
+                <span class='st-meta__author'><data:post.author/></span>
+                <span aria-hidden='true' class='st-meta__dot'>&#183;</span>
+                <time class='published' expr:datetime='data:post.timestampISO8601'><data:post.timestamp/></time>
+                <b:if cond='data:post.allowComments'>
+                  <span aria-hidden='true' class='st-meta__dot'>&#183;</span>
+                  <a expr:href='data:post.url + &quot;#comments&quot;'><data:post.numComments/> comments</a>
+                </b:if>
+              </p>
+            </b:includable>
+
+            <!-- ============ ARTICLE (item page) ============ -->
+            <b:includable id='postSingle' var='post'>
+              <article class='st-article hentry' itemscope='itemscope' itemtype='https://schema.org/BlogPosting'>
+
+                <header class='st-article__head'>
+
+                  <nav aria-label='Breadcrumb'>
+                    <ol class='st-crumbs'>
+                      <li><a expr:href='data:blog.homepageUrl'>Home</a></li>
+                      <b:loop values='data:post.labels' var='label'>
+                        <b:if cond='data:label.isLast'>
+                          <li aria-hidden='true' class='st-crumbs__sep'>/</li>
+                          <li><a expr:href='data:label.url'><data:label.name/></a></li>
+                        </b:if>
+                      </b:loop>
+                      <li aria-hidden='true' class='st-crumbs__sep'>/</li>
+                      <li aria-current='page'><data:post.title/></li>
+                    </ol>
+                  </nav>
+
+                  <b:if cond='data:post.labels'>
+                    <div class='st-article__cat'>
+                      <b:loop values='data:post.labels' var='label'>
+                        <a class='st-chip' expr:href='data:label.url' rel='tag'><data:label.name/></a>
+                      </b:loop>
+                    </div>
+                  </b:if>
+
+                  <h1 class='st-article__title entry-title' itemprop='headline'><data:post.title/></h1>
+
+                  <div class='st-article__meta'>
+                    <span aria-hidden='true' class='st-avatar'><data:post.author/></span>
+                    <span class='st-meta'>
+                      <span>By <b class='st-meta__author' itemprop='author'><data:post.author/></b></span>
+                      <span aria-hidden='true' class='st-meta__dot'>&#183;</span>
+                      <time class='published' expr:datetime='data:post.timestampISO8601' itemprop='datePublished'><data:post.timestamp/></time>
+                      <span aria-hidden='true' class='st-meta__dot'>&#183;</span>
+                      <span id='st-readtime'>Reading time</span>
+                    </span>
+                  </div>
+                </header>
+
+                <!-- Featured image: the first image of the post is moved
+                     here at runtime, so no manual HTML is needed in the
+                     article itself. Deliberately contains no <img> tag: an
+                     empty src would fire a pointless request. -->
+                <figure class='st-article__media' hidden='hidden' id='st-article-media'>
+                  <figcaption class='st-article__caption'/>
+                </figure>
+
+                <!-- Table of contents slot (built by JS, hidden if the
+                     article has fewer than 3 sub-headings) -->
+                <nav aria-label='Table of contents' hidden='hidden' id='st-toc'/>
+
+                <div class='post-body entry-content' id='st-article-body' itemprop='articleBody'>
+                  <data:post.body/>
+                </div>
+
+                <b:if cond='data:post.labels'>
+                  <div class='st-labels'>
+                    <span class='st-labels__label'><data:postLabelsLabel/></span>
+                    <b:loop values='data:post.labels' var='label'>
+                      <a class='st-chip' expr:href='data:label.url' rel='tag'><data:label.name/></a>
+                    </b:loop>
+                  </div>
+                </b:if>
+
+                <!-- ========== SOCIAL SHARING ==========
+                     hrefs are completed (and correctly encoded) at runtime;
+                     the values below already work without JavaScript. -->
+                <div class='st-share'>
+                  <span class='st-share__label'>Share</span>
+                  <a class='st-share__btn st-share__btn--wa' data-st-share='whatsapp' expr:href='&quot;https://api.whatsapp.com/send?text=&quot; + data:post.url' rel='nofollow noopener' target='_blank' title='Share on WhatsApp'>
+                    <span class='st-sr'>Share on WhatsApp</span>
+                    <svg aria-hidden='true' fill='currentColor' height='18' viewBox='0 0 24 24' width='18'><path d='M12.04 2a9.9 9.9 0 0 0-8.5 14.98L2 22l5.2-1.5A9.9 9.9 0 1 0 12.04 2Zm0 1.8a8.1 8.1 0 1 1-4.2 15l-.4-.2-2.6.8.8-2.5-.2-.4A8.1 8.1 0 0 1 12.04 3.8Zm-3 4c-.2 0-.5.1-.7.4-.3.3-.9.9-.9 2s.8 2.3 1 2.5c.1.2 1.6 2.6 4 3.5 2 .8 2.4.7 2.8.6.5 0 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.6-.3-1.6-.8c-.2-.1-.4-.1-.6.1l-.7.9c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.1-.3 0-.5l-.7-1.6c-.2-.4-.4-.4-.6-.4Z'/></svg>
+                  </a>
+                  <a class='st-share__btn st-share__btn--fb' data-st-share='facebook' expr:href='&quot;https://www.facebook.com/sharer/sharer.php?u=&quot; + data:post.url' rel='nofollow noopener' target='_blank' title='Share on Facebook'>
+                    <span class='st-sr'>Share on Facebook</span>
+                    <svg aria-hidden='true' fill='currentColor' height='18' viewBox='0 0 24 24' width='18'><path d='M13.5 21v-7h2.4l.4-2.9h-2.8V9.2c0-.8.2-1.4 1.4-1.4h1.5V5.2c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.2H8v2.9h2.5V21h3Z'/></svg>
+                  </a>
+                  <a class='st-share__btn st-share__btn--x' data-st-share='x' expr:href='&quot;https://twitter.com/intent/tweet?url=&quot; + data:post.url' rel='nofollow noopener' target='_blank' title='Share on X'>
+                    <span class='st-sr'>Share on X</span>
+                    <svg aria-hidden='true' fill='currentColor' height='18' viewBox='0 0 24 24' width='18'><path d='M17.5 3h3l-6.6 7.5L21.8 21h-5.9l-4.2-5.5L6.7 21H3.6l7-8L2.5 3h6l3.9 5.2L17.5 3Zm-1 16h1.7L7.6 4.8H5.8L16.5 19Z'/></svg>
+                  </a>
+                  <a class='st-share__btn st-share__btn--tg' data-st-share='telegram' expr:href='&quot;https://t.me/share/url?url=&quot; + data:post.url' rel='nofollow noopener' target='_blank' title='Share on Telegram'>
+                    <span class='st-sr'>Share on Telegram</span>
+                    <svg aria-hidden='true' fill='currentColor' height='18' viewBox='0 0 24 24' width='18'><path d='M21.7 4.3 2.9 11.5c-.9.4-.9 1.6 0 1.9l4.6 1.5 1.8 5.4c.2.7 1.1.9 1.6.3l2.5-2.7 4.6 3.4c.6.4 1.4.1 1.6-.6l3-15c.2-.8-.6-1.5-1.4-1.2l.5-.2Zm-4 3.6-7.4 6.7-.3 3.4-1.4-4.3 9.1-5.8Z'/></svg>
+                  </a>
+                  <a class='st-share__btn st-share__btn--in' data-st-share='linkedin' expr:href='&quot;https://www.linkedin.com/sharing/share-offsite/?url=&quot; + data:post.url' rel='nofollow noopener' target='_blank' title='Share on LinkedIn'>
+                    <span class='st-sr'>Share on LinkedIn</span>
+                    <svg aria-hidden='true' fill='currentColor' height='18' viewBox='0 0 24 24' width='18'><path d='M6.9 8.6H3.8V21h3.1V8.6ZM5.3 3.5a1.8 1.8 0 1 0 0 3.6 1.8 1.8 0 0 0 0-3.6ZM21 13.9c0-3-1.6-4.4-3.8-4.4-1.7 0-2.5 1-2.9 1.6V8.6H11V21h3.1v-6.6c0-1.5.7-2.3 1.8-2.3s1.7.8 1.7 2.3V21H21v-7.1Z'/></svg>
+                  </a>
+                  <button class='st-share__btn st-share__btn--copy' data-st-share='copy' type='button' title='Copy link'>
+                    <span class='st-sr'>Copy link</span>
+                    <svg aria-hidden='true' fill='none' height='18' stroke='currentColor' stroke-linecap='round' stroke-width='2' viewBox='0 0 24 24' width='18'><path d='M10 13a5 5 0 0 0 7 0l2-2a5 5 0 0 0-7-7l-1 1'/><path d='M14 11a5 5 0 0 0-7 0l-2 2a5 5 0 0 0 7 7l1-1'/></svg>
+                  </button>
+                </div>
+
+                <!-- ========== AUTHOR ==========
+                     Built from the real Blogger author profile. Nothing is
+                     invented: if the profile has no "About me" text, the
+                     bio line is simply not printed. -->
+                <aside class='st-author'>
+                  <span aria-hidden='true' class='st-author__avatar'><data:post.author/></span>
+                  <div>
+                    <p class='st-author__role'>Written by</p>
+                    <h2 class='st-author__name'>
+                      <b:if cond='data:post.authorProfileUrl'>
+                        <a expr:href='data:post.authorProfileUrl' rel='author'><data:post.author/></a>
+                      <b:else/>
+                        <data:post.author/>
+                      </b:if>
+                    </h2>
+                    <b:if cond='data:post.authorAboutMe'>
+                      <p class='st-author__bio'><data:post.authorAboutMe/></p>
+                    </b:if>
+                  </div>
+                </aside>
+
+                <!-- ================= NEWER / OLDER ================= -->
+                <nav aria-label='More articles' class='st-postnav'>
+                  <b:if cond='data:newerPageUrl'>
+                    <a class='st-postnav--prev' expr:href='data:newerPageUrl' rel='prev'>
+                      <span class='st-postnav__dir'>&#8592; Newer</span>
+                      <span class='st-postnav__title'><data:newerPageTitle/></span>
+                    </a>
+                  </b:if>
+                  <b:if cond='data:olderPageUrl'>
+                    <a class='st-postnav--next' expr:href='data:olderPageUrl' rel='next'>
+                      <span class='st-postnav__dir'>Older &#8594;</span>
+                      <span class='st-postnav__title'><data:olderPageTitle/></span>
+                    </a>
+                  </b:if>
+                </nav>
+
+                <!-- ========== RELATED ==========
+                     BLOGGER LIMITATION: Blogger has no server-side "related
+                     posts" data. This rail is filled from the blog's own
+                     Atom feed (same origin, no third party) using the last
+                     label of the article. If site feeds are switched off in
+                     Settings > Other, the section stays hidden. -->
+                <section aria-label='Related articles' class='st-feed-section' hidden='hidden' id='st-related'>
+                  <div class='st-sec-head'>
+                    <div>
+                      <p class='st-eyebrow'>Keep reading</p>
+                      <h2>Related articles</h2>
+                    </div>
+                  </div>
+                </section>
+
+                <b:include data='post' name='comments'/>
+
+                <!-- ========== ARTICLE STRUCTURED DATA ==========
+                     Kept inside the post includable because data:post is
+                     only in scope here. JSON-LD is valid anywhere in the
+                     document. Titles containing a double quote would need
+                     manual escaping; that is a Blogger data limitation. -->
+                <script type='application/ld+json'>
+                {
+                  "@context": "https://schema.org",
+                  "@type": "BlogPosting",
+                  "mainEntityOfPage": { "@type": "WebPage", "@id": "<data:blog.url/>" },
+                  "headline": "<data:post.title/>",
+                  "datePublished": "<data:post.timestampISO8601/>",
+                  "dateModified": "<data:post.lastUpdatedISO8601/>",
+                  "author": { "@type": "Person", "name": "<data:post.author/>"<b:if cond='data:post.authorProfileUrl'>, "url": "<data:post.authorProfileUrl/>"</b:if> },
+                  "publisher": { "@type": "Organization", "name": "<data:blog.title/>", "url": "<data:blog.homepageUrl/>" }<b:if cond='data:post.labels'>,
+                  "keywords": "<b:loop values='data:post.labels' var='label'><data:label.name/><b:if cond='data:label.isLast'><b:else/>, </b:if></b:loop>"</b:if>
+                }
+                </script>
+                <script type='application/ld+json'>
+                {
+                  "@context": "https://schema.org",
+                  "@type": "BreadcrumbList",
+                  "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "Home", "item": "<data:blog.homepageUrl/>" }<b:loop values='data:post.labels' var='label'><b:if cond='data:label.isLast'>,
+                    { "@type": "ListItem", "position": 2, "name": "<data:label.name/>", "item": "<data:label.url/>" }</b:if></b:loop>,
+                    { "@type": "ListItem", "position": <b:if cond='data:post.labels'>3<b:else/>2</b:if>, "name": "<data:post.title/>" }
+                  ]
+                }
+                </script>
+
+              </article>
+            </b:includable>
+
+            <!-- ============ STATIC PAGE ============ -->
+            <b:includable id='postPage' var='post'>
+              <article class='st-page hentry'>
+                <header>
+                  <nav aria-label='Breadcrumb'>
+                    <ol class='st-crumbs'>
+                      <li><a expr:href='data:blog.homepageUrl'>Home</a></li>
+                      <li aria-hidden='true' class='st-crumbs__sep'>/</li>
+                      <li aria-current='page'><data:post.title/></li>
+                    </ol>
+                  </nav>
+                  <h1 class='st-page__title entry-title'><data:post.title/></h1>
+                </header>
+                <div class='post-body entry-content' id='st-article-body'>
+                  <data:post.body/>
+                </div>
+                <b:if cond='data:post.allowComments'>
+                  <b:include data='post' name='comments'/>
+                </b:if>
+              </article>
+            </b:includable>
+
+            <!-- ============ COMMENTS ============
+                 Rendered from Blogger's own comment data. The "add a
+                 comment" link points at the URL Blogger generates for
+                 whatever comment mode the blog uses (embedded, popup or
+                 full page), so it keeps working with any setting. -->
+            <b:includable id='comments' var='post'>
+              <section class='st-comments' id='comments'>
+                <h2 class='st-comments__title'>
+                  <data:post.numComments/> <data:commentLabel/>
+                </h2>
+                <b:if cond='data:post.comments'>
+                  <ol class='st-commentlist'>
+                    <b:loop values='data:post.comments' var='comment'>
+                      <li class='st-comment' expr:id='&quot;c&quot; + data:comment.id'>
+                        <span aria-hidden='true' class='st-comment__avatar'><data:comment.author/></span>
+                        <div>
+                          <p class='st-comment__head'>
+                            <b:if cond='data:comment.authorUrl'>
+                              <a class='st-comment__author' expr:href='data:comment.authorUrl' rel='nofollow noopener' target='_blank'><data:comment.author/></a>
+                            <b:else/>
+                              <span class='st-comment__author'><data:comment.author/></span>
+                            </b:if>
+                            <span class='st-comment__date'><data:comment.timestamp/></span>
+                          </p>
+                          <div class='st-comment__body'><data:comment.body/></div>
+                          <b:if cond='data:comment.deleteUrl'>
+                            <a class='st-comment__delete' expr:href='data:comment.deleteUrl' title='Delete comment'>&#215;</a>
+                          </b:if>
+                        </div>
+                      </li>
+                    </b:loop>
+                  </ol>
+                <b:else/>
+                  <p class='st-meta'>No comments yet. Be the first to respond.</p>
+                </b:if>
+
+                <b:if cond='data:post.allowComments'>
+                  <p class='st-comments__cta'>
+                    <a class='st-btn' expr:href='data:post.addCommentUrl' rel='nofollow'>Write a comment</a>
+                  </p>
+                <b:else/>
+                  <p class='st-meta'>Comments are closed for this article.</p>
+                </b:if>
+              </section>
+            </b:includable>
+
+            <!-- ============ INDEX PAGINATION ============ -->
+            <b:includable id='nextprev'>
+              <nav aria-label='More posts' class='st-pager'>
+                <b:if cond='data:newerPageUrl'>
+                  <a expr:href='data:newerPageUrl' rel='prev'>&#8592; <data:newerPageTitle/></a>
+                </b:if>
+                <b:if cond='data:olderPageUrl'>
+                  <a expr:href='data:olderPageUrl' rel='next'><data:olderPageTitle/> &#8594;</a>
+                </b:if>
+              </nav>
+            </b:includable>
+
+            <!-- ============ EMPTY / STATUS STATES ============ -->
+            <b:includable id='status-message'>
+              <b:if cond='data:navMessage'>
+                <div class='status-msg-wrap' role='status'>
+                  <div class='status-msg-body'><data:navMessage/></div>
+                </div>
+              </b:if>
+            </b:includable>
+
+            <!-- ============ 404 ============ -->
+            <b:includable id='errorPage'>
+              <div class='st-404'>
+                <div class='st-404__art' aria-hidden='true'>
+                  <svg fill='none' height='180' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.6' viewBox='0 0 120 120' width='180'>
+                    <path d='M30 16h40l20 20v62a6 6 0 0 1-6 6H30a6 6 0 0 1-6-6V22a6 6 0 0 1 6-6Z' opacity='.25'/>
+                    <path d='M70 16v20h20'/>
+                    <path d='M36 52h30M36 64h40M36 76h24' opacity='.5'/>
+                    <circle cx='78' cy='80' r='17'/>
+                    <path d='M90 92l10 10'/>
+                  </svg>
+                </div>
+                <div>
+                  <p class='st-eyebrow'>Error 404</p>
+                  <h1 class='st-404__code'>Page not found</h1>
+                  <p class='st-404__text'>The page you were looking for has been moved, renamed, or no longer exists. Use the search below, or pick one of these instead.</p>
+                  <form class='st-field' expr:action='data:blog.homepageUrl + &quot;search&quot;' method='get' role='search'>
+                    <label class='st-sr' for='st-404-q'>Search this site</label>
+                    <input id='st-404-q' name='q' placeholder='Search articles, topics, guides' type='search'/>
+                    <button aria-label='Search' type='submit'>
+                      <svg aria-hidden='true' fill='none' height='18' stroke='currentColor' stroke-linecap='round' stroke-width='2.2' viewBox='0 0 24 24' width='18'><circle cx='11' cy='11' r='7'/><path d='M21 21l-4.35-4.35'/></svg>
+                    </button>
+                  </form>
+                  <div class='st-404__actions'>
+                    <a class='st-btn' expr:href='data:blog.homepageUrl'>Back to the homepage</a>
+                    <a class='st-btn st-btn--ghost' href='/search'>Browse all articles</a>
+                  </div>
+                  <ul class='st-404__links'>
+                    <li><a href='/p/about.html'>About this site</a></li>
+                    <li><a href='/p/contact.html'>Contact us</a></li>
+                    <li><a href='/p/privacy-policy.html'>Privacy policy</a></li>
+                  </ul>
+                </div>
+              </div>
+            </b:includable>
+
+          </b:widget>
+        </b:section>
+
+        <!-- AD SLOT: below the article / below the feed -->
+        <div class='st-ad st-ad--end'>
+          <b:section id='ad-article-end' showaddelement='yes'/>
+        </div>
+
+      </div>
+
+      <!-- ================= SIDEBAR =================
+           Moves below the content automatically under 900px.
+           Everything here is a normal Blogger gadget: add, remove or
+           reorder from Layout without touching the theme. -->
+      <aside aria-label='Sidebar' class='st-sidebar'>
+
+        <div class='st-ad st-ad--sidebar'>
+          <b:section id='ad-sidebar' showaddelement='yes'/>
+        </div>
+
+        <b:section id='sidebar' showaddelement='yes'>
+          <b:widget id='BlogSearch1' locked='false' title='Search' type='BlogSearch'/>
+
+          <b:widget id='PopularPosts2' locked='false' title='Popular this week' type='PopularPosts'>
+            <b:widget-settings>
+              <b:widget-setting name='numItemsToShow'>4</b:widget-setting>
+              <b:widget-setting name='showThumbnails'>true</b:widget-setting>
+              <b:widget-setting name='showSnippets'>true</b:widget-setting>
+              <b:widget-setting name='timeRange'>LAST_WEEK</b:widget-setting>
+            </b:widget-settings>
+          </b:widget>
+
+          <b:widget id='Label1' locked='false' title='Topics' type='Label'>
+            <b:widget-settings>
+              <b:widget-setting name='sorting'>ALPHA</b:widget-setting>
+              <b:widget-setting name='display'>LIST</b:widget-setting>
+              <b:widget-setting name='selectedLabelsList'/>
+              <b:widget-setting name='showType'>ALL</b:widget-setting>
+              <b:widget-setting name='showFreqNumbers'>true</b:widget-setting>
+            </b:widget-settings>
+          </b:widget>
+
+          <!-- CUSTOMIZATION AREA: Layout > Sidebar note -->
+          <b:widget id='HTML3' locked='false' title='About this site' type='HTML'>
+            <b:widget-settings>
+              <b:widget-setting name='content'>@@SIDEBAR@@</b:widget-setting>
+            </b:widget-settings>
+          </b:widget>
+
+          <b:widget id='BlogArchive1' locked='false' title='Archive' type='BlogArchive'>
+            <b:widget-settings>
+              <b:widget-setting name='showStyle'>FLAT</b:widget-setting>
+              <b:widget-setting name='showFreqNumbers'>true</b:widget-setting>
+            </b:widget-settings>
+          </b:widget>
+        </b:section>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- ================= SUBSCRIBE =================
+       BLOGGER LIMITATION: Blogger has no built-in email newsletter form
+       (its old Follow-by-Email gadget depended on FeedBurner, which
+       Google retired). The RSS button below is the native, always-working
+       subscription route. To collect email addresses, add an HTML gadget
+       in Layout > Newsletter and paste your provider's form snippet into
+       it - the slot is styled and centred for you. -->
+  <section class='st-subscribe' id='subscribe'>
+    <div class='st-container st-subscribe__in'>
+      <p class='st-eyebrow st-eyebrow--plain'>Stay updated</p>
+      <h2>Never miss a new article</h2>
+      <p>Follow the feed, or add your email provider&#8217;s form in Layout &#8594; Newsletter.</p>
+      <div class='st-subscribe__actions'>
+        <a class='st-btn' expr:href='data:blog.homepageUrl + &quot;feeds/posts/default&quot;'>Subscribe to the RSS feed</a>
+        <a class='st-btn st-btn--ghost' href='/search'>Browse the archive</a>
+      </div>
+      <b:section id='newsletter' maxwidgets='2' showaddelement='yes'/>
+    </div>
+  </section>
+
+  <!-- ================= AD SLOT: FOOTER ================= -->
+  <div class='st-ad st-ad--footer st-container'>
+    <b:section id='ad-footer' showaddelement='yes'/>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class='st-footer'>
+    <div class='st-container st-footer__grid'>
+
+      <div class='st-footer__about'>
+        <!-- CUSTOMIZATION AREA: Layout > Footer about -->
+        <b:section id='footer-1' maxwidgets='1' showaddelement='yes'>
+          <b:widget id='HTML4' locked='false' title='About' type='HTML'>
+            <b:widget-settings>
+              <b:widget-setting name='content'>@@FOOTER_ABOUT@@</b:widget-setting>
+            </b:widget-settings>
+          </b:widget>
+        </b:section>
+
+        <!-- CUSTOMIZATION AREA: replace every href="#" with your own
+             profile URL, or delete the links you do not use. Icons are
+             inline SVG, so nothing is loaded from a third party. -->
+        <div class='st-social'>
+          <a aria-label='Facebook' href='#'><svg aria-hidden='true' fill='currentColor' height='17' viewBox='0 0 24 24' width='17'><path d='M13.5 21v-7h2.4l.4-2.9h-2.8V9.2c0-.8.2-1.4 1.4-1.4h1.5V5.2c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.2H8v2.9h2.5V21h3Z'/></svg></a>
+          <a aria-label='X' href='#'><svg aria-hidden='true' fill='currentColor' height='17' viewBox='0 0 24 24' width='17'><path d='M17.5 3h3l-6.6 7.5L21.8 21h-5.9l-4.2-5.5L6.7 21H3.6l7-8L2.5 3h6l3.9 5.2L17.5 3Zm-1 16h1.7L7.6 4.8H5.8L16.5 19Z'/></svg></a>
+          <a aria-label='YouTube' href='#'><svg aria-hidden='true' fill='currentColor' height='17' viewBox='0 0 24 24' width='17'><path d='M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8ZM10 15V9l5.2 3L10 15Z'/></svg></a>
+          <a aria-label='Telegram' href='#'><svg aria-hidden='true' fill='currentColor' height='17' viewBox='0 0 24 24' width='17'><path d='M21.7 4.3 2.9 11.5c-.9.4-.9 1.6 0 1.9l4.6 1.5 1.8 5.4c.2.7 1.1.9 1.6.3l2.5-2.7 4.6 3.4c.6.4 1.4.1 1.6-.6l3-15c.2-.8-.6-1.5-1.4-1.2l.5-.2Zm-4 3.6-7.4 6.7-.3 3.4-1.4-4.3 9.1-5.8Z'/></svg></a>
+          <a aria-label='RSS feed' expr:href='data:blog.homepageUrl + &quot;feeds/posts/default&quot;'><svg aria-hidden='true' fill='currentColor' height='17' viewBox='0 0 24 24' width='17'><path d='M5 3a16 16 0 0 1 16 16h-3A13 13 0 0 0 5 6V3Zm0 6a10 10 0 0 1 10 10h-3A7 7 0 0 0 5 12V9Zm1.5 8.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z'/></svg></a>
+        </div>
+      </div>
+
+      <div>
+        <!-- Native Label gadget = real categories, always in sync -->
+        <b:section id='footer-2' maxwidgets='1' showaddelement='yes'>
+          <b:widget id='Label2' locked='false' title='Topics' type='Label'>
+            <b:widget-settings>
+              <b:widget-setting name='sorting'>ALPHA</b:widget-setting>
+              <b:widget-setting name='display'>LIST</b:widget-setting>
+              <b:widget-setting name='selectedLabelsList'/>
+              <b:widget-setting name='showType'>ALL</b:widget-setting>
+              <b:widget-setting name='showFreqNumbers'>false</b:widget-setting>
+            </b:widget-settings>
+          </b:widget>
+        </b:section>
+      </div>
+
+      <div>
+        <!-- CUSTOMIZATION AREA: Layout > Footer links -->
+        <b:section id='footer-3' maxwidgets='1' showaddelement='yes'>
+          <b:widget id='LinkList3' locked='false' title='Important links' type='LinkList'>
+            <b:widget-settings>
+              <b:widget-setting name='sorting'>NONE</b:widget-setting>
+              <b:widget-setting name='text-0'>About</b:widget-setting>
+              <b:widget-setting name='link-0'>/p/about.html</b:widget-setting>
+              <b:widget-setting name='text-1'>Contact</b:widget-setting>
+              <b:widget-setting name='link-1'>/p/contact.html</b:widget-setting>
+              <b:widget-setting name='text-2'>Privacy Policy</b:widget-setting>
+              <b:widget-setting name='link-2'>/p/privacy-policy.html</b:widget-setting>
+              <b:widget-setting name='text-3'>Disclaimer</b:widget-setting>
+              <b:widget-setting name='link-3'>/p/disclaimer.html</b:widget-setting>
+              <b:widget-setting name='text-4'>Terms and Conditions</b:widget-setting>
+              <b:widget-setting name='link-4'>/p/terms.html</b:widget-setting>
+            </b:widget-settings>
+          </b:widget>
+        </b:section>
+      </div>
+
+      <div>
+        <!-- CUSTOMIZATION AREA: Layout > Footer contact -->
+        <b:section id='footer-4' maxwidgets='1' showaddelement='yes'>
+          <b:widget id='HTML5' locked='false' title='Contact' type='HTML'>
+            <b:widget-settings>
+              <b:widget-setting name='content'>@@FOOTER_CONTACT@@</b:widget-setting>
+            </b:widget-settings>
+          </b:widget>
+        </b:section>
+      </div>
+
+    </div>
+
+    <div class='st-footer__bottom'>
+      <div class='st-container st-footer__bottom-in'>
+        <p class='st-footer__note'>&#169; <span id='st-year'>2026</span> <data:blog.title/>. All rights reserved.</p>
+        <!-- Blogger attribution gadget: required by Blogger's terms. -->
+        <b:section id='footer-bottom' maxwidgets='1' showaddelement='no'>
+          <b:widget id='Attribution1' locked='true' title='' type='Attribution'/>
+        </b:section>
+      </div>
+    </div>
+  </footer>
+
+  <button aria-label='Back to top' class='st-totop' id='st-totop' type='button'>
+    <svg aria-hidden='true' fill='none' height='20' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2.4' viewBox='0 0 24 24' width='20'><path d='M12 19V5M5 12l7-7 7 7'/></svg>
+  </button>
+
+  <div class='st-scrim' id='st-scrim'/>
+
+  <!-- ================= SEARCH OVERLAY ================= -->
+  <div aria-hidden='true' class='st-search-overlay' id='st-search'>
+    <div class='st-search-overlay__panel'>
+      <div class='st-container'>
+        <div class='st-search-overlay__head'>
+          <div>
+            <h2>Search this site</h2>
+            <p>Full-text search across every published article.</p>
+          </div>
+          <button aria-label='Close search' class='st-iconbtn' id='st-search-close' type='button'>
+            <svg aria-hidden='true' fill='none' height='20' stroke='currentColor' stroke-linecap='round' stroke-width='2.2' viewBox='0 0 24 24' width='20'><path d='M6 6l12 12M18 6L6 18'/></svg>
+          </button>
+        </div>
+        <form expr:action='data:blog.homepageUrl + &quot;search&quot;' method='get' role='search'>
+          <label class='st-sr' for='st-search-input'>Search this site</label>
+          <div class='st-field'>
+            <input autocomplete='off' id='st-search-input' name='q' placeholder='Type a keyword and press Enter' type='search'/>
+            <button aria-label='Search' type='submit'>
+              <svg aria-hidden='true' fill='none' height='20' stroke='currentColor' stroke-linecap='round' stroke-width='2.2' viewBox='0 0 24 24' width='20'><circle cx='11' cy='11' r='7'/><path d='M21 21l-4.35-4.35'/></svg>
+            </button>
+          </div>
+          <p class='st-search-overlay__hint'>Tip: press <kbd>/</kbd> anywhere to jump to search, <kbd>Esc</kbd> to close.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SITE STRUCTURED DATA =================
+       Only values Blogger actually provides: blog title and URL.
+       No invented organisation, address or person data. -->
+  <script type='application/ld+json'>
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "<data:blog.title/>",
+    "url": "<data:blog.homepageUrl/>",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "<data:blog.homepageUrl/>search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  <script type='application/ld+json'>
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "<data:blog.title/>",
+    "url": "<data:blog.homepageUrl/>"
+  }
+  </script>
+  <b:if cond='data:blog.pageType == &quot;static_page&quot;'>
+    <script type='application/ld+json'>
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "<data:blog.pageName/>",
+      "url": "<data:blog.url/>",
+      "isPartOf": { "@type": "WebSite", "name": "<data:blog.title/>", "url": "<data:blog.homepageUrl/>" }
+    }
+    </script>
+  </b:if>
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script type='text/javascript'>
+//<![CDATA[
+@@JS@@
+//]]>
+  </script>
+
+</body>
+</html>
