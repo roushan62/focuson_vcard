@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html class="v2" dir="ltr" lang="en">
+<head>
+
+  
+
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="#0d5f57" name="theme-color">
+
+  
+  
+    <title>A practical baseline for measuring what actually changed | SITE NAME</title>
+  
+
+  
+  
+
+  
+  <meta content="A practical baseline for measuring what actually changed" property="og:title">
+  <meta content="SITE NAME" property="og:site_name">
+  <meta content="post.html" property="og:url">
+  <meta content="en" property="og:locale">
+  
+    <meta content="A clear, dependable publication on practical work." property="og:description">
+    <meta content="A clear, dependable publication on practical work." name="twitter:description">
+  
+  
+    <meta content="article" property="og:type">
+  
+  
+    <meta content="summary_large_image" name="twitter:card">
+    <meta content="img1.svg" property="og:image">
+    <meta content="img1.svg" name="twitter:image">
+  
+  <meta content="A practical baseline for measuring what actually changed" name="twitter:title">
+
+  
+  
+
+  
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="theme.css">
+
+  
+  <noscript>
+    <style type="text/css">
+      @media (max-width: 899px) {
+        .st-navtoggle { display: none; }
+        .st-nav__in { flex-direction: column; align-items: stretch; padding-block: 6px 10px; }
+        .st-drawer {
+          position: static;
+          visibility: visible;
+          transform: none;
+          width: auto;
+          max-width: none;
+          padding: 0;
+          background: transparent;
+          box-shadow: none;
+          overflow: visible;
+        }
+        .st-drawer__close,
+        .st-drawer__search { display: none; }
+        #navigation ul { flex-direction: column; align-items: stretch; gap: 0; }
+        #navigation ul a { min-height: 42px; }
+        .st-searchform { display: block; flex: 1 1 100%; order: 3; margin-top: 10px; }
+        .st-header__in { flex-wrap: wrap; }
+        .st-totop { display: none; }
+      }
+    </style>
+  </noscript>
+
+</head>
+
+<body class="item st-body" data-home="/" data-pagetype="item">
+
+  <a class="st-skip" href="#st-main">Skip to main content</a>
+
+  
+  <div aria-hidden="true" class="st-progress"><span class="st-progress__bar" id="st-progress-bar"></span></div>
+
+  
+  <div class="st-utility">
+    <div class="st-container st-utility__in">
+      <div class="st-utility__left">
+        <span class="st-utility__date" id="st-today"></span>
+        <div class="st-textsize">
+          <span class="st-textsize__label" id="st-textsize-label">Text size</span>
+          <button aria-describedby="st-textsize-label" aria-label="Decrease text size" id="st-fs-dec" type="button">A−</button>
+          <button aria-describedby="st-textsize-label" aria-label="Reset text size" id="st-fs-reset" type="button">A</button>
+          <button aria-describedby="st-textsize-label" aria-label="Increase text size" id="st-fs-inc" type="button">A+</button>
+        </div>
+      </div>
+      <div class="st-utility__right">
+        
+        <div class="section st-utility-links" id="utility"><div class="widget LinkList" id="LinkList2"><div class="widget-content"><ul><li><a href="page.html">About</a></li><li><a href="page.html">Contact</a></li><li><a href="page.html">Privacy Policy</a></li></ul></div></div></div>
+      </div>
+    </div>
+  </div>
+
+  
+  <header class="st-header">
+    <div class="st-container st-header__in">
+
+      
+      <div class="st-brand">
+        <div class="section " id="header"><div class="widget Header" id="Header1"><div class="header-widget"><h1 class="title"><a href="index.html">SITE NAME</a></h1><p class="description">YOUR TAGLINE</p></div></div></div>
+      </div>
+
+      
+      <form class="st-searchform" action="label.html" method="get" role="search">
+        <label class="st-sr" for="st-header-search">Search this site</label>
+        <div class="st-field">
+          <input autocomplete="off" id="st-header-search" name="q" placeholder="Search articles, topics, guides" type="search">
+          <button aria-label="Search" type="submit">
+            <svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-width="2.2" viewBox="0 0 24 24" width="18"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.35-4.35"></path></svg>
+          </button>
+        </div>
+      </form>
+
+      <div class="st-header__actions">
+        <button aria-label="Open search" class="st-iconbtn st-iconbtn--search" data-st-open="search" type="button">
+          <svg aria-hidden="true" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-width="2.2" viewBox="0 0 24 24" width="20"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.35-4.35"></path></svg>
+        </button>
+        <a class="st-btn st-btn--sm" href="#subscribe">Subscribe</a>
+      </div>
+
+    </div>
+  </header>
+
+  
+  <div class="st-nav">
+    <div class="st-container st-nav__in">
+      <button aria-controls="st-drawer" aria-expanded="false" aria-label="Open menu" class="st-navtoggle" id="st-navtoggle" type="button">
+        <svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-width="2.2" viewBox="0 0 24 24" width="22"><path d="M3 6h18M3 12h18M3 18h18"></path></svg>
+        <span>Menu</span>
+      </button>
+
+      <div aria-label="Site menu" class="st-drawer" id="st-drawer">
+        <button class="st-drawer__close" id="st-drawer-close" type="button">
+          <span>Menu</span>
+          <svg aria-hidden="true" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-width="2.2" viewBox="0 0 24 24" width="20"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+        </button>
+        <button class="st-drawer__search" data-st-open="search" type="button">
+          <svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-width="2.2" viewBox="0 0 24 24" width="18"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.35-4.35"></path></svg>
+          <span>Search this site</span>
+        </button>
+        <div class="section " id="navigation"><div class="widget LinkList" id="LinkList1"><div class="widget-content"><ul><li><a href="index.html">Home</a></li><li><a href="label.html">Latest Articles</a></li><li><a href="label.html">Browse Topics</a></li><li><a href="label.html">- Topic One</a></li><li><a href="label.html">- Topic Two</a></li><li><a href="page.html">About</a></li><li><a href="page.html">Contact</a></li></ul></div></div></div>
+      </div>
+
+      <div class="st-nav__side">
+        <a class="st-chip" href="label.html">All articles</a>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="st-announce" id="st-announce">
+    <div class="st-container st-announce__in">
+      <div class="st-announce__body">
+        <div class="section " id="announcement"><div class="widget HTML" id="HTML1"><div class="widget-content"></div></div></div>
+      </div>
+      <button aria-label="Dismiss announcement" class="st-announce__close" id="st-announce-close" type="button">×</button>
+    </div>
+  </div>
+
+  
+  <div class="st-ad st-ad--header st-container">
+    <div class="section " id="ad-header"></div>
+  </div>
+
+  
+  
+
+  
+  <main class="st-container st-main" id="st-main">
+
+    
+    
+
+    
+    <div class="st-grid">
+
+      <div class="st-content">
+
+        
+        
+          <div class="st-ad st-ad--article">
+            <div class="section " id="ad-article"></div>
+          </div>
+        
+
+        <div class="section " id="main"><div class="widget Blog" id="Blog1">
+              
+                
+                  
+                    
+              <article class="st-article hentry" itemscope="itemscope" itemtype="https://schema.org/BlogPosting">
+
+                <header class="st-article__head">
+
+                  <nav aria-label="Breadcrumb">
+                    <ol class="st-crumbs">
+                      <li><a href="index.html">Home</a></li>
+                      
+                        
+                          <li aria-hidden="true" class="st-crumbs__sep">/</li>
+                          <li><a href="/search/label/Guides">Guides</a></li>
+                        
+                      
+                      <li aria-hidden="true" class="st-crumbs__sep">/</li>
+                      <li aria-current="page">A practical baseline for measuring what actually changed</li>
+                    </ol>
+                  </nav>
+
+                  
+                    <div class="st-article__cat">
+                      
+                        <a class="st-chip" href="/search/label/Guides" rel="tag">Guides</a>
+                      
+                    </div>
+                  
+
+                  <h1 class="st-article__title entry-title" itemprop="headline">A practical baseline for measuring what actually changed</h1>
+
+                  <div class="st-article__meta">
+                    <span aria-hidden="true" class="st-avatar">Roushan Gupta</span>
+                    <span class="st-meta">
+                      <span>By <b class="st-meta__author" itemprop="author">Roushan Gupta</b></span>
+                      <span aria-hidden="true" class="st-meta__dot">·</span>
+                      <time class="published" datetime="2026-08-28T09:30:00+05:30" itemprop="datePublished">12 August 2026</time>
+                      <span aria-hidden="true" class="st-meta__dot">·</span>
+                      <span id="st-readtime">Reading time</span>
+                    </span>
+                  </div>
+                </header>
+
+                
+                <figure class="st-article__media" hidden="hidden" id="st-article-media">
+                  <figcaption class="st-article__caption"></figcaption>
+                </figure>
+
+                
+                <nav aria-label="Table of contents" hidden="hidden" id="st-toc"></nav>
+
+                <div class="post-body entry-content" id="st-article-body" itemprop="articleBody">
+                  <p>Field practice changes faster than the guidance that describes it. This piece walks through what actually works on the ground, what the common failure modes are, and how to check your own setup against both. It is written for people who have to make this work on a Tuesday afternoon, not for people writing about it later. Field practice changes faster than the guidance that describes it. This piece walks through what actually works on the ground, what the common failure modes are, and how to check your own setup against both. It is written for people who have to make this work on a Tuesday afternoon, not for people writing about it later. </p><p><img alt="Diagram of the recommended workflow" src="img0.svg"/></p>
+<h2>Where most setups go wrong</h2>
+<p>Three failure modes account for almost every problem we are asked about. None
+of them are exotic, and all three are cheap to rule out before you change
+anything else.</p>
+<ul>
+<li><strong>Assumed defaults.</strong> The documented default is not always the
+shipped default, and the shipped default is not always the configured one.</li>
+<li><strong>Order of operations.</strong> Two steps that look independent are
+not, and swapping them produces a result that looks correct until it is not.</li>
+<li><strong>Missing feedback.</strong> When nothing reports failure, a silent
+failure is indistinguishable from success.</li>
+</ul>
+<blockquote><p>The cheapest diagnostic is the one that tells you the system is
+lying to you. Build that first, then optimise.</p></blockquote>
+<h2>A working baseline</h2>
+<p>Start from a configuration you can reproduce. Write it down, keep it under
+version control, and treat any change to it as a change worth reviewing.</p>
+<h3>Step one: measure before you change</h3>
+<p>Record the current numbers. Without a baseline, every later comparison is an
+argument rather than a measurement.</p>
+<h3>Step two: change one thing</h3>
+<p>Change a single variable, re-measure, and only then move on. It feels slower
+and it is faster, because you always know which change did what.</p>
+<pre><code># the smallest useful check
+run --report --format=text --limit=10
+# compare against the recorded baseline
+diff baseline.txt report.txt</code></pre>
+<h2>Reference values</h2>
+<p>The table below is the range we see on healthy setups. Treat the edges of the
+range as a prompt to investigate, not as an automatic failure.</p>
+<table>
+<thead><tr><th>Measure</th><th>Typical</th><th>Investigate above</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Response time</td><td>120&#8211;240 ms</td><td>600 ms</td><td>p95, warm cache</td></tr>
+<tr><td>Error rate</td><td>under 0.4%</td><td>1.5%</td><td>rolling 24 hours</td></tr>
+<tr><td>Queue depth</td><td>0&#8211;40</td><td>200</td><td>steady state, not peak</td></tr>
+<tr><td>Cache hit ratio</td><td>88&#8211;96%</td><td>below 70%</td><td>after warm-up</td></tr>
+</tbody>
+</table>
+<h2>What to do when it still fails</h2>
+<p>Reproduce it on the smallest possible case. A failure you can trigger on
+demand is half solved, because you can now test a fix instead of hoping for one.
+Keep notes as you go: the sequence that turned out to matter is rarely the
+sequence you expected.</p>
+<h3>Escalation checklist</h3>
+<ol>
+<li>Confirm the failure still reproduces after a clean restart.</li>
+<li>Capture one full trace, not a summary of several.</li>
+<li>State what you changed and what you ruled out, in that order.</li>
+</ol>
+<p>Finally, write the fix down somewhere the next person will find it. An
+unwritten fix is a future incident.</p>
+
+                </div>
+
+                
+                  <div class="st-labels">
+                    <span class="st-labels__label">Topics</span>
+                    
+                      <a class="st-chip" href="/search/label/Guides" rel="tag">Guides</a>
+                    
+                  </div>
+                
+
+                
+                <div class="st-share">
+                  <span class="st-share__label">Share</span>
+                  <a class="st-share__btn st-share__btn--wa" data-st-share="whatsapp" href="https://api.whatsapp.com/send?text=post.html" rel="nofollow noopener" target="_blank" title="Share on WhatsApp">
+                    <span class="st-sr">Share on WhatsApp</span>
+                    <svg aria-hidden="true" fill="currentColor" height="18" viewBox="0 0 24 24" width="18"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.98L2 22l5.2-1.5A9.9 9.9 0 1 0 12.04 2Zm0 1.8a8.1 8.1 0 1 1-4.2 15l-.4-.2-2.6.8.8-2.5-.2-.4A8.1 8.1 0 0 1 12.04 3.8Zm-3 4c-.2 0-.5.1-.7.4-.3.3-.9.9-.9 2s.8 2.3 1 2.5c.1.2 1.6 2.6 4 3.5 2 .8 2.4.7 2.8.6.5 0 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.6-.3-1.6-.8c-.2-.1-.4-.1-.6.1l-.7.9c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.1-.3 0-.5l-.7-1.6c-.2-.4-.4-.4-.6-.4Z"></path></svg>
+                  </a>
+                  <a class="st-share__btn st-share__btn--fb" data-st-share="facebook" href="https://www.facebook.com/sharer/sharer.php?u=post.html" rel="nofollow noopener" target="_blank" title="Share on Facebook">
+                    <span class="st-sr">Share on Facebook</span>
+                    <svg aria-hidden="true" fill="currentColor" height="18" viewBox="0 0 24 24" width="18"><path d="M13.5 21v-7h2.4l.4-2.9h-2.8V9.2c0-.8.2-1.4 1.4-1.4h1.5V5.2c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.2H8v2.9h2.5V21h3Z"></path></svg>
+                  </a>
+                  <a class="st-share__btn st-share__btn--x" data-st-share="x" href="https://twitter.com/intent/tweet?url=post.html" rel="nofollow noopener" target="_blank" title="Share on X">
+                    <span class="st-sr">Share on X</span>
+                    <svg aria-hidden="true" fill="currentColor" height="18" viewBox="0 0 24 24" width="18"><path d="M17.5 3h3l-6.6 7.5L21.8 21h-5.9l-4.2-5.5L6.7 21H3.6l7-8L2.5 3h6l3.9 5.2L17.5 3Zm-1 16h1.7L7.6 4.8H5.8L16.5 19Z"></path></svg>
+                  </a>
+                  <a class="st-share__btn st-share__btn--tg" data-st-share="telegram" href="https://t.me/share/url?url=post.html" rel="nofollow noopener" target="_blank" title="Share on Telegram">
+                    <span class="st-sr">Share on Telegram</span>
+                    <svg aria-hidden="true" fill="currentColor" height="18" viewBox="0 0 24 24" width="18"><path d="M21.7 4.3 2.9 11.5c-.9.4-.9 1.6 0 1.9l4.6 1.5 1.8 5.4c.2.7 1.1.9 1.6.3l2.5-2.7 4.6 3.4c.6.4 1.4.1 1.6-.6l3-15c.2-.8-.6-1.5-1.4-1.2l.5-.2Zm-4 3.6-7.4 6.7-.3 3.4-1.4-4.3 9.1-5.8Z"></path></svg>
+                  </a>
+                  <a class="st-share__btn st-share__btn--in" data-st-share="linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=post.html" rel="nofollow noopener" target="_blank" title="Share on LinkedIn">
+                    <span class="st-sr">Share on LinkedIn</span>
+                    <svg aria-hidden="true" fill="currentColor" height="18" viewBox="0 0 24 24" width="18"><path d="M6.9 8.6H3.8V21h3.1V8.6ZM5.3 3.5a1.8 1.8 0 1 0 0 3.6 1.8 1.8 0 0 0 0-3.6ZM21 13.9c0-3-1.6-4.4-3.8-4.4-1.7 0-2.5 1-2.9 1.6V8.6H11V21h3.1v-6.6c0-1.5.7-2.3 1.8-2.3s1.7.8 1.7 2.3V21H21v-7.1Z"></path></svg>
+                  </a>
+                  <button class="st-share__btn st-share__btn--copy" data-st-share="copy" type="button" title="Copy link">
+                    <span class="st-sr">Copy link</span>
+                    <svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewBox="0 0 24 24" width="18"><path d="M10 13a5 5 0 0 0 7 0l2-2a5 5 0 0 0-7-7l-1 1"></path><path d="M14 11a5 5 0 0 0-7 0l-2 2a5 5 0 0 0 7 7l1-1"></path></svg>
+                  </button>
+                </div>
+
+                
+                <aside class="st-author">
+                  <span aria-hidden="true" class="st-author__avatar">Roushan Gupta</span>
+                  <div>
+                    <p class="st-author__role">Written by</p>
+                    <h2 class="st-author__name">
+                      
+                        <a href="https://www.blogger.com/profile/0000000000000000" rel="author">Roushan Gupta</a>
+                      
+                    </h2>
+                    
+                      <p class="st-author__bio">Writes about practical field work, measurement, and the unglamorous parts of keeping systems running. Based in India.</p>
+                    
+                  </div>
+                </aside>
+
+                
+                <nav aria-label="More articles" class="st-postnav">
+                  
+                    <a class="st-postnav--prev" href="post.html" rel="prev">
+                      <span class="st-postnav__dir">← Newer</span>
+                      <span class="st-postnav__title">Interview: running a small team through a long migration</span>
+                    </a>
+                  
+                  
+                    <a class="st-postnav--next" href="/search?updated-max=2026-07-01" rel="next">
+                      <span class="st-postnav__dir">Older →</span>
+                      <span class="st-postnav__title">Older Posts</span>
+                    </a>
+                  
+                </nav>
+
+                
+                <section aria-label="Related articles" class="st-feed-section" hidden="hidden" id="st-related">
+                  <div class="st-sec-head">
+                    <div>
+                      <p class="st-eyebrow">Keep reading</p>
+                      <h2>Related articles</h2>
+                    </div>
+                  </div>
+                </section>
+
+                
+              <section class="st-comments" id="comments">
+                <h2 class="st-comments__title">
+                  7 comments
+                </h2>
+                
+                  <ol class="st-commentlist">
+                    
+                      <li class="st-comment" id="c1">
+                        <span aria-hidden="true" class="st-comment__avatar">Ananya Sharma</span>
+                        <div>
+                          <p class="st-comment__head">
+                            
+                              <span class="st-comment__author">Ananya Sharma</span>
+                            
+                            <span class="st-comment__date">13 August 2026, 10:12</span>
+                          </p>
+                          <div class="st-comment__body">The baseline point is the one nobody wants to hear and everyone needs. We skipped it for a month and paid for it.</div>
+                          
+                        </div>
+                      </li>
+                    
+                      <li class="st-comment" id="c2">
+                        <span aria-hidden="true" class="st-comment__avatar">Vikram Nair</span>
+                        <div>
+                          <p class="st-comment__head">
+                            
+                              <a class="st-comment__author" href="https://example.com" rel="nofollow noopener" target="_blank">Vikram Nair</a>
+                            
+                            <span class="st-comment__date">14 August 2026, 08:44</span>
+                          </p>
+                          <div class="st-comment__body">Worked through the checklist on our staging setup today. Second item was exactly our problem.</div>
+                          
+                        </div>
+                      </li>
+                    
+                  </ol>
+                
+
+                
+                  <p class="st-comments__cta">
+                    <a class="st-btn" href="#comments" rel="nofollow">Write a comment</a>
+                  </p>
+                
+              </section>
+            
+
+                
+                <script type="application/ld+json">
+                {
+                  "@context": "https://schema.org",
+                  "@type": "BlogPosting",
+                  "mainEntityOfPage": { "@type": "WebPage", "@id": "post.html" },
+                  "headline": "A practical baseline for measuring what actually changed",
+                  "datePublished": "2026-08-28T09:30:00+05:30",
+                  "dateModified": "2026-08-29T14:10:00+05:30",
+                  "author": { "@type": "Person", "name": "Roushan Gupta", "url": "https://www.blogger.com/profile/0000000000000000" },
+                  "publisher": { "@type": "Organization", "name": "SITE NAME", "url": "/" },
+                  "keywords": "Guides"
+                }
+                </script>
+                <script type="application/ld+json">
+                {
+                  "@context": "https://schema.org",
+                  "@type": "BreadcrumbList",
+                  "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "Home", "item": "/" },
+                    { "@type": "ListItem", "position": 2, "name": "Guides", "item": "/search/label/Guides" },
+                    { "@type": "ListItem", "position": 3, "name": "A practical baseline for measuring what actually changed" }
+                  ]
+                }
+                </script>
+
+              </article>
+            
+                  
+                
+              
+            </div></div>
+
+        
+        <div class="st-ad st-ad--end">
+          <div class="section " id="ad-article-end"></div>
+        </div>
+
+      </div>
+
+      
+      <aside aria-label="Sidebar" class="st-sidebar">
+
+        <div class="st-ad st-ad--sidebar">
+          <div class="section " id="ad-sidebar"></div>
+        </div>
+
+        <div class="section " id="sidebar"><div class="widget BlogSearch" id="BlogSearch1"><h2>Search</h2><div class="widget-content" role="search"><form action="label.html" method="get"><input class="search-input" name="q" placeholder="Search" type="text" value=""/><input class="search-action" type="submit" value="Search"/></form></div></div><div class="widget PopularPosts" id="PopularPosts2"><h2>Popular this week</h2><div class="widget-content popular-posts"><ul><li><div class="item-content"><div class="item-thumbnail"><a href="post.html"><img alt="" height="72" src="img1.svg" width="72"/></a></div><div class="item-title"><a href="post.html">Interview: running a small team through a long migration</a></div><div class="item-snippet">A short extract of the article, clamped by the theme.</div></div></li><li><div class="item-content"><div class="item-thumbnail"><a href="post.html"><img alt="" height="72" src="img2.svg" width="72"/></a></div><div class="item-title"><a href="post.html">What the revised guidelines mean for day-to-day work</a></div><div class="item-snippet">A short extract of the article, clamped by the theme.</div></div></li><li><div class="item-content"><div class="item-thumbnail"><a href="post.html"><img alt="" height="72" src="img3.svg" width="72"/></a></div><div class="item-title"><a href="post.html">Seven field errors we see every single month</a></div><div class="item-snippet">A short extract of the article, clamped by the theme.</div></div></li><li><div class="item-content"><div class="item-thumbnail"><a href="post.html"><img alt="" height="72" src="img4.svg" width="72"/></a></div><div class="item-title"><a href="post.html">Reading a specification without losing an afternoon</a></div><div class="item-snippet">A short extract of the article, clamped by the theme.</div></div></li></ul></div></div><div class="widget Label" id="Label1"><h2>Topics</h2><div class="widget-content list-label-widget-content"><ul><li><a dir="ltr" href="/search/label/Guides">Guides</a><span class="label-count" dir="ltr">(18)</span></li><li><a dir="ltr" href="/search/label/Interviews">Interviews</a><span class="label-count" dir="ltr">(7)</span></li><li><a dir="ltr" href="/search/label/Policy">Policy</a><span class="label-count" dir="ltr">(11)</span></li><li><a dir="ltr" href="/search/label/Archives">Archives</a><span class="label-count" dir="ltr">(4)</span></li></ul></div></div><div class="widget HTML" id="HTML3"><h2>About this site</h2><div class="widget-content"></div></div><div class="widget BlogArchive" id="BlogArchive1"><h2>Archive</h2><div class="widget-content"><div id="ArchiveList"><div id="BlogArchive1_ArchiveList"><ul class="flat"><li class="archivedate"><a href="/2026_05_01_archive.html">August 2026</a><span class="post-count" dir="ltr">(6)</span></li><li class="archivedate"><a href="/2026_06_01_archive.html">July 2026</a><span class="post-count" dir="ltr">(9)</span></li><li class="archivedate"><a href="/2026_07_01_archive.html">June 2026</a><span class="post-count" dir="ltr">(7)</span></li><li class="archivedate"><a href="/2026_08_01_archive.html">May 2026</a><span class="post-count" dir="ltr">(5)</span></li></ul></div></div></div></div></div>
+      </aside>
+
+    </div>
+  </main>
+
+  
+  <section class="st-subscribe" id="subscribe">
+    <div class="st-container st-subscribe__in">
+      <p class="st-eyebrow st-eyebrow--plain">Stay updated</p>
+      <h2>Never miss a new article</h2>
+      <p>Follow the feed, or add your email provider’s form in Layout → Newsletter.</p>
+      <div class="st-subscribe__actions">
+        <a class="st-btn" href="/feeds/posts/default">Subscribe to the RSS feed</a>
+        <a class="st-btn st-btn--ghost" href="label.html">Browse the archive</a>
+      </div>
+      <div class="section " id="newsletter"></div>
+    </div>
+  </section>
+
+  
+  <div class="st-ad st-ad--footer st-container">
+    <div class="section " id="ad-footer"></div>
+  </div>
+
+  
+  <footer class="st-footer">
+    <div class="st-container st-footer__grid">
+
+      <div class="st-footer__about">
+        
+        <div class="section " id="footer-1"><div class="widget HTML" id="HTML4"><h2>About</h2><div class="widget-content"></div></div></div>
+
+        
+        <div class="st-social">
+          <a aria-label="Facebook" href="#"><svg aria-hidden="true" fill="currentColor" height="17" viewBox="0 0 24 24" width="17"><path d="M13.5 21v-7h2.4l.4-2.9h-2.8V9.2c0-.8.2-1.4 1.4-1.4h1.5V5.2c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.2H8v2.9h2.5V21h3Z"></path></svg></a>
+          <a aria-label="X" href="#"><svg aria-hidden="true" fill="currentColor" height="17" viewBox="0 0 24 24" width="17"><path d="M17.5 3h3l-6.6 7.5L21.8 21h-5.9l-4.2-5.5L6.7 21H3.6l7-8L2.5 3h6l3.9 5.2L17.5 3Zm-1 16h1.7L7.6 4.8H5.8L16.5 19Z"></path></svg></a>
+          <a aria-label="YouTube" href="#"><svg aria-hidden="true" fill="currentColor" height="17" viewBox="0 0 24 24" width="17"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8ZM10 15V9l5.2 3L10 15Z"></path></svg></a>
+          <a aria-label="Telegram" href="#"><svg aria-hidden="true" fill="currentColor" height="17" viewBox="0 0 24 24" width="17"><path d="M21.7 4.3 2.9 11.5c-.9.4-.9 1.6 0 1.9l4.6 1.5 1.8 5.4c.2.7 1.1.9 1.6.3l2.5-2.7 4.6 3.4c.6.4 1.4.1 1.6-.6l3-15c.2-.8-.6-1.5-1.4-1.2l.5-.2Zm-4 3.6-7.4 6.7-.3 3.4-1.4-4.3 9.1-5.8Z"></path></svg></a>
+          <a aria-label="RSS feed" href="/feeds/posts/default"><svg aria-hidden="true" fill="currentColor" height="17" viewBox="0 0 24 24" width="17"><path d="M5 3a16 16 0 0 1 16 16h-3A13 13 0 0 0 5 6V3Zm0 6a10 10 0 0 1 10 10h-3A7 7 0 0 0 5 12V9Zm1.5 8.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z"></path></svg></a>
+        </div>
+      </div>
+
+      <div>
+        
+        <div class="section " id="footer-2"><div class="widget Label" id="Label2"><h2>Topics</h2><div class="widget-content list-label-widget-content"><ul><li><a dir="ltr" href="/search/label/Guides">Guides</a></li><li><a dir="ltr" href="/search/label/Interviews">Interviews</a></li><li><a dir="ltr" href="/search/label/Policy">Policy</a></li><li><a dir="ltr" href="/search/label/Archives">Archives</a></li></ul></div></div></div>
+      </div>
+
+      <div>
+        
+        <div class="section " id="footer-3"><div class="widget LinkList" id="LinkList3"><h2>Important links</h2><div class="widget-content"><ul><li><a href="page.html">About</a></li><li><a href="page.html">Contact</a></li><li><a href="page.html">Privacy Policy</a></li><li><a href="page.html">Disclaimer</a></li><li><a href="page.html">Terms and Conditions</a></li></ul></div></div></div>
+      </div>
+
+      <div>
+        
+        <div class="section " id="footer-4"><div class="widget HTML" id="HTML5"><h2>Contact</h2><div class="widget-content"></div></div></div>
+      </div>
+
+    </div>
+
+    <div class="st-footer__bottom">
+      <div class="st-container st-footer__bottom-in">
+        <p class="st-footer__note">© <span id="st-year">2026</span> SITE NAME. All rights reserved.</p>
+        
+        <div class="section " id="footer-bottom"><div class="widget Attribution" id="Attribution1"><div class="widget-content"><div class="copyright">Powered by <a href="https://www.blogger.com">Blogger</a>.</div></div></div></div>
+      </div>
+    </div>
+  </footer>
+
+  <button aria-label="Back to top" class="st-totop" id="st-totop" type="button">
+    <svg aria-hidden="true" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" viewBox="0 0 24 24" width="20"><path d="M12 19V5M5 12l7-7 7 7"></path></svg>
+  </button>
+
+  <div class="st-scrim" id="st-scrim"></div>
+
+  
+  <div aria-hidden="true" class="st-search-overlay" id="st-search">
+    <div class="st-search-overlay__panel">
+      <div class="st-container">
+        <div class="st-search-overlay__head">
+          <div>
+            <h2>Search this site</h2>
+            <p>Full-text search across every published article.</p>
+          </div>
+          <button aria-label="Close search" class="st-iconbtn" id="st-search-close" type="button">
+            <svg aria-hidden="true" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-width="2.2" viewBox="0 0 24 24" width="20"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+          </button>
+        </div>
+        <form action="label.html" method="get" role="search">
+          <label class="st-sr" for="st-search-input">Search this site</label>
+          <div class="st-field">
+            <input autocomplete="off" id="st-search-input" name="q" placeholder="Type a keyword and press Enter" type="search">
+            <button aria-label="Search" type="submit">
+              <svg aria-hidden="true" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-width="2.2" viewBox="0 0 24 24" width="20"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.35-4.35"></path></svg>
+            </button>
+          </div>
+          <p class="st-search-overlay__hint">Tip: press <kbd>/</kbd> anywhere to jump to search, <kbd>Esc</kbd> to close.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "SITE NAME",
+    "url": "/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "SITE NAME",
+    "url": "/"
+  }
+  </script>
+  
+
+  
+  <script src="theme.js"></script>
+
+<div style="background:#16211f;color:#fff;padding:10px 16px;font:13px system-ui">Preview: post.html <span style="font:16px system-ui;line-height:2"> <a href="index.html">index.html</a> · <a href="post.html">post.html</a> · <a href="page.html">page.html</a> · <a href="label.html">label.html</a> · <a href="search-empty.html">search-empty.html</a> · <a href="label-empty.html">label-empty.html</a> · <a href="404.html">404.html</a> ·</span></div></body>
+</html>
