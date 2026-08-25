@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="hi" class="v2">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SIDH-Style Blogger Theme — Preview (Index View)</title>
+<meta name="theme-color" content="#14418f"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&amp;family=Noto+Sans+Devanagari:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="theme.css" rel="stylesheet"/>
+</head>
+<body class="index">
+
+<a class="skip-link" href="#main-content">मुख्य सामग्री पर जाएँ | Skip to main content</a>
+
+<div aria-hidden="true" id="read-progress"></div>
+<div aria-hidden="true" class="tricolor"></div>
+
+<!-- Accessibility Toolbar -->
+<div class="a11y-bar">
+  <div class="container a11y-inner">
+    <div class="a11y-left">
+      <a class="a11y-link" href="#" title="Screen Reader Access">🅰 <span>Screen Reader Access</span></a>
+    </div>
+    <div class="a11y-tools">
+      <span class="a11y-label">Text Size:</span>
+      <button aria-label="फ़ॉन्ट छोटा करें" class="a11y-btn" id="fs-dec" type="button">A−</button>
+      <button aria-label="सामान्य फ़ॉन्ट" class="a11y-btn" id="fs-reset" type="button">A</button>
+      <button aria-label="फ़ॉन्ट बड़ा करें" class="a11y-btn" id="fs-inc" type="button">A+</button>
+      <button aria-label="हाई कंट्रास्ट" aria-pressed="false" class="a11y-btn" id="t-contrast" type="button">◐ Contrast</button>
+      <button aria-label="डार्क मोड" aria-pressed="false" class="a11y-btn" id="t-dark" type="button">🌙 Dark</button>
+      <div class="gt-wrap" id="google_translate_element" title="भाषा चुनें | Select language"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="site-header" id="site-header">
+  <div class="container header-grid">
+    <div class="header-brand">
+      <div class="widget Header" id="Header1">
+        <div class="titlewrapper"><h1 class="title"><a href="#">Skill Digital Blog</a></h1></div>
+        <div class="descriptionwrapper"><p class="description">सरकारी योजनाएँ • नौकरी • रिजल्ट — सरल भाषा में</p></div>
+      </div>
+    </div>
+    <form action="#" class="header-search" method="get" role="search">
+      <label class="sr-only" for="sidh-q">खोजें | Search this blog</label>
+      <input id="sidh-q" name="q" placeholder="खोजें / Search…" type="search"/>
+      <input name="max-results" type="hidden" value="8"/>
+      <button aria-label="खोजें | Search" class="search-btn" type="submit">
+        <svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-width="2.2" viewBox="0 0 24 24" width="18"><circle cx="11" cy="11" r="7"/><line x1="21" x2="16.3" y1="21" y2="16.3"/></svg>
+      </button>
+    </form>
+  </div>
+</header>
+
+<!-- Navigation -->
+<nav aria-label="मुख्य मेन्यू | Main navigation" class="main-nav" id="main-nav">
+  <div class="container nav-wrap">
+    <button aria-controls="LinkList1" aria-expanded="false" class="nav-toggle" id="nav-toggle" type="button">☰ <span>मेन्यू / Menu</span></button>
+    <div class="widget LinkList" id="LinkList1">
+      <h2 class="title">Main Menu</h2>
+      <div class="widget-content">
+        <ul>
+          <li><a href="/">होम / Home</a></li>
+          <li><a href="#">सरकारी योजनाएँ</a></li>
+          <li><a href="#">नौकरी / Jobs</a></li>
+          <li><a href="#">रिजल्ट / Results</a></li>
+          <li><a href="#">हमारे बारे में</a></li>
+          <li><a href="#">संपर्क / Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="container">
+  <div class="section hero" id="hero">
+    <div class="widget HTML" id="HTML1">
+      <div class="widget-content">
+        <div class="hero-inner">
+          <div class="hero-text">
+            <p class="hero-kicker">🇮🇳 Citizen-First Blog Portal • नागरिक-केंद्रित पोर्टल</p>
+            <h2 class="hero-title">नमस्ते! इस ब्लॉग पर आपका स्वागत है</h2>
+            <p class="hero-sub">सरकारी योजनाएँ, नई नौकरियाँ, रिजल्ट, एडमिट कार्ड और डिजिटल जानकारी — सब कुछ आसान भाषा में, एक ही जगह। ऊपर दिए टूल से टेक्स्ट साइज़, कंट्रास्ट और भाषा बदल सकते हैं।</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#">🔍 खोज शुरू करें</a>
+              <a class="btn btn-outline" href="#">ℹ️ हमारे बारे में</a>
+            </div>
+          </div>
+          <div class="hero-cards">
+            <a class="hero-card" href="#"><span class="hc-ico">💼</span><b>नौकरियाँ</b><small>Latest Jobs &amp; Recruitment</small></a>
+            <a class="hero-card" href="#"><span class="hc-ico">📋</span><b>सरकारी योजनाएँ</b><small>Govt. Schemes</small></a>
+            <a class="hero-card" href="#"><span class="hc-ico">🏆</span><b>रिज़ल्ट</b><small>Results &amp; Cut-off</small></a>
+            <a class="hero-card" href="#"><span class="hc-ico">🎫</span><b>एडमिट कार्ड</b><small>Admit Card</small></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Main + Sidebar -->
+<div class="container main-wrap" id="main-content">
+  <main class="content-area">
+
+    <nav aria-label="Breadcrumb" class="breadcrumbs">
+      <a href="#">🏠 होम / Home</a><span class="crumb-sep">›</span><span class="crumb-current">लेटेस्ट अपडेट</span>
+    </nav>
+
+    <div class="section content-section" id="main">
+      <div class="widget Blog" id="Blog1">
+        <div class="blog-posts hfeed">
+
+          <div class="post-outer"><article class="post">
+            <h3 class="post-title"><a href="#">प्रधानमंत्री आवास योजना 2026: ऑनलाइन आवेदन, पात्रता और स्टेटस चेक</a></h3>
+            <div class="byline">📅 24 अगस्त 2026 · ✍ Admin</div>
+            <div class="snippet-thumbnail"><img alt="PMAY" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='270'%3E%3Crect width='480' height='270' fill='%2314418f'/%3E%3Cpath d='M0 210 L120 150 L240 195 L360 120 L480 170 L480 270 L0 270 Z' fill='rgba(255,255,255,0.2)'/%3E%3C/svg%3E"/></div>
+            <p class="post-snippet">PM आवास योजना के नए राउंड में आवेदन शुरू हो गए हैं। जानें पात्रता, ज़रूरी दस्तावेज़, आवेदन शुल्क और घर बैठे ऑनलाइन आवेदन की पूरी प्रक्रिया…</p>
+            <div class="jump-link"><a href="#">पूरा पढ़ें</a></div>
+            <div class="post-labels"><a href="#">Schemes</a><a href="#">2026</a></div>
+          </article></div>
+
+          <div class="post-outer"><article class="post">
+            <h3 class="post-title"><a href="#">RRB NTPC भर्ती 2026: कुल 11,550 पद, आवेदन की लास्ट डेट घोषित</a></h3>
+            <div class="byline">📅 23 अगस्त 2026 · ✍ Admin</div>
+            <div class="snippet-thumbnail"><img alt="RRB" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='270'%3E%3Crect width='480' height='270' fill='%23e8630a'/%3E%3Ccircle cx='240' cy='135' r='70' fill='rgba(255,255,255,0.22)'/%3E%3C/svg%3E"/></div>
+            <p class="post-snippet">रेलवे भर्ती बोर्ड ने NTPC के 11,550 पदों की अधिसूचना जारी कर दी है। ग्रेजुएट और अंडर-ग्रेजुएट दोनों कैटेगरी के लिए आवेदन…</p>
+            <div class="jump-link"><a href="#">पूरा पढ़ें</a></div>
+            <div class="post-labels"><a href="#">Jobs</a></div>
+          </article></div>
+
+          <div class="post-outer"><article class="post">
+            <h3 class="post-title"><a href="#">UGC NET रिजल्ट 2026 घोषित: अभी चेक करें अपना स्कोरकार्ड</a></h3>
+            <div class="byline">📅 22 अगस्त 2026 · ✍ Admin</div>
+            <div class="snippet-thumbnail"><img alt="Result" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='270'%3E%3Crect width='480' height='270' fill='%23138808'/%3E%3Cpath d='M60 200 L160 110 L230 170 L340 70 L420 130' stroke='rgba(255,255,255,0.35)' stroke-width='22' fill='none'/%3E%3C/svg%3E"/></div>
+            <p class="post-snippet">नेशनल टेस्टिंग एजेंसी ने UGC NET जून साइकिल का रिजल्ट घोषित कर दिया है। ऑफिशियल वेबसाइट पर लॉगिन करके स्कोरकार्ड डाउनलोड करें…</p>
+            <div class="jump-link"><a href="#">पूरा पढ़ें</a></div>
+            <div class="post-labels"><a href="#">Results</a></div>
+          </article></div>
+
+          <div class="post-outer"><article class="post">
+            <h3 class="post-title"><a href="#">आयुष्मान कार्ड डाउनलोड: मोबाइल से सिर्फ 2 मिनट में, स्टेप-बाय-स्टेप गाइड</a></h3>
+            <div class="byline">📅 21 अगस्त 2026 · ✍ Admin</div>
+            <div class="snippet-thumbnail"><img alt="Ayushman" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='270'%3E%3Crect width='480' height='270' fill='%230e7490'/%3E%3Crect x='150' y='60' width='180' height='150' rx='14' fill='rgba(255,255,255,0.22)'/%3E%3C/svg%3E"/></div>
+            <p class="post-snippet">अपना आयुष्मान हेल्थ कार्ड घर बैठे डाउनलोड करें। मेरा पैन आधार पोर्टल से लॉगिन करके PDF में कार्ड पाएं, पूरी प्रक्रिया यहाँ…</p>
+            <div class="jump-link"><a href="#">पूरा पढ़ें</a></div>
+            <div class="post-labels"><a href="#">Schemes</a><a href="#">Health</a></div>
+          </article></div>
+
+          <div class="post-outer"><article class="post">
+            <h3 class="post-title"><a href="#">बिहार शिक्षक भर्ती: एडमिट कार्ड जारी, यहाँ से सीधा डाउनलोड करें</a></h3>
+            <div class="byline">📅 20 अगस्त 2026 · ✍ Admin</div>
+            <div class="snippet-thumbnail"><img alt="Admit Card" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='270'%3E%3Crect width='480' height='270' fill='%23b91c1c'/%3E%3Cpath d='M170 90 L310 90 L310 200 L170 200 Z' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='10'/%3E%3C/svg%3E"/></div>
+            <p class="post-snippet">शिक्षा विभाग ने BPSC शिक्षक भर्ती परीक्षा के एडमिट कार्ड जारी कर दिए हैं। परीक्षा 5 सितंबर को, जानें परीक्षा केंद्र और निर्देश…</p>
+            <div class="jump-link"><a href="#">पूरा पढ़ें</a></div>
+            <div class="post-labels"><a href="#">Admit-Card</a></div>
+          </article></div>
+
+          <div class="post-outer"><article class="post">
+            <h3 class="post-title"><a href="#">स्टार्टअप इंडिया लोन: बिना गारंटी ₹50 लाख तक का लोन कैसे लें?</a></h3>
+            <div class="byline">📅 19 अगस्त 2026 · ✍ Admin</div>
+            <div class="snippet-thumbnail"><img alt="Startup" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='270'%3E%3Crect width='480' height='270' fill='%234c1d95'/%3E%3Ccircle cx='150' cy='190' r='34' fill='rgba(255,255,255,0.25)'/%3E%3Ccircle cx='240' cy='150' r='46' fill='rgba(255,255,255,0.18)'/%3E%3Ccircle cx='330' cy='105' r='58' fill='rgba(255,255,255,0.12)'/%3E%3C/svg%3E"/></div>
+            <p class="post-snippet">मुद्रा और स्टैंड-अप इंडिया योजना के तहत बिना गारंटी बिज़नेस लोन। पात्रता, ब्याज दर, ऑनलाइन आवेदन और बैंक की लिस्ट…</p>
+            <div class="jump-link"><a href="#">पूरा पढ़ें</a></div>
+            <div class="post-labels"><a href="#">Schemes</a><a href="#">Business</a></div>
+          </article></div>
+
+        </div>
+        <div id="blog-pager"><a href="#">‹ नई पोस्ट</a><a href="#">पुरानी पोस्ट ›</a></div>
+      </div>
+    </div>
+  </main>
+
+  <aside aria-label="साइडबार | Sidebar" class="sidebar-area">
+    <div class="section sidebar" id="sidebar">
+
+      <div class="widget HTML" id="HTML2">
+        <h2 class="title">👤 हमारे बारे में / About Us</h2>
+        <div class="widget-content">
+          <p>नमस्ते 🙏 हम सरल भाषा में सरकारी योजनाओं, नौकरी, रिजल्ट और डिजिटल सेवाओं की सही जानकारी लाते हैं।</p>
+          <div class="follow-btns">
+            <a class="btn btn-primary btn-sm" href="#">Telegram</a>
+            <a class="btn btn-outline btn-sm" href="#">WhatsApp</a>
+            <a class="btn btn-outline btn-sm" href="#">YouTube</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="widget PopularPosts" id="PopularPosts1">
+        <h2 class="title">🔥 लोकप्रिय पोस्ट / Popular Posts</h2>
+        <div class="widget-content popular-posts">
+          <ul>
+            <li><div class="item-content">
+              <div class="item-thumbnail"><a href="#"><img alt="" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='148' height='116'%3E%3Crect width='148' height='116' fill='%2314418f'/%3E%3C/svg%3E"/></a></div>
+              <div class="item-title"><a href="#">PM आवास योजना: नई लिस्ट जारी</a></div>
+              <div class="item-snippet">अपना नाम लिस्ट में चेक करें…</div>
+            </div></li>
+            <li><div class="item-content">
+              <div class="item-thumbnail"><a href="#"><img alt="" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='148' height='116'%3E%3Crect width='148' height='116' fill='%23e8630a'/%3E%3C/svg%3E"/></a></div>
+              <div class="item-title"><a href="#">रेलवे भर्ती 2026: ऑनलाइन फॉर्म</a></div>
+              <div class="item-snippet">11,550 पदों के लिए आवेदन…</div>
+            </div></li>
+            <li><div class="item-content">
+              <div class="item-thumbnail"><a href="#"><img alt="" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='148' height='116'%3E%3Crect width='148' height='116' fill='%23138808'/%3E%3C/svg%3E"/></a></div>
+              <div class="item-title"><a href="#">UGC NET स्कोरकार्ड डाउनलोड</a></div>
+              <div class="item-snippet">रिजल्ट घोषित, अभी चेक करें…</div>
+            </div></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="widget Label" id="Label1">
+        <h2 class="title">🏷️ श्रेणियाँ / Labels</h2>
+        <div class="widget-content cloud-label-widget-content">
+          <span class="label-size"><a class="label-name" href="#">Jobs</a> <span class="label-count">32</span></span>
+          <span class="label-size"><a class="label-name" href="#">Schemes</a> <span class="label-count">48</span></span>
+          <span class="label-size"><a class="label-name" href="#">Results</a> <span class="label-count">21</span></span>
+          <span class="label-size"><a class="label-name" href="#">Admit-Card</a> <span class="label-count">17</span></span>
+          <span class="label-size"><a class="label-name" href="#">Scholarship</a> <span class="label-count">9</span></span>
+        </div>
+      </div>
+
+      <div class="widget BlogArchive" id="BlogArchive1">
+        <h2 class="title">🗓️ आर्काइव / Archive</h2>
+        <div class="widget-content" id="ArchiveList">
+          <ul class="flat">
+            <li><a href="#">अगस्त 2026</a><span class="post-count">(24)</span></li>
+            <li><a href="#">जुलाई 2026</a><span class="post-count">(31)</span></li>
+            <li><a href="#">जून 2026</a><span class="post-count">(28)</span></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </aside>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div class="widget HTML" id="HTML3">
+        <h2 class="title">ℹ️ पोर्टल परिचय / About this Portal</h2>
+        <div class="widget-content">
+          <p>यह ब्लॉग पोर्टल नागरिकों के लिए सरकारी योजनाओं, भर्ती परीक्षा, रिजल्ट और डिजिटल सेवाओं की जानकारी सरल भाषा में उपलब्ध कराता है।</p>
+          <p class="footer-badge">♿ Accessible • 🌐 Multilingual • 📱 Responsive • ⚡ Fast</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <div class="widget LinkList" id="LinkList2">
+        <h2 class="title">🔗 महत्वपूर्ण लिंक / Important Links</h2>
+        <div class="widget-content">
+          <ul>
+            <li><a href="#">होम / Home</a></li>
+            <li><a href="#">हमारे बारे में / About</a></li>
+            <li><a href="#">प्राइवेसी पॉलिसी / Privacy Policy</a></li>
+            <li><a href="#">डिस्क्लेमर / Disclaimer</a></li>
+            <li><a href="#">साइटमैप / Sitemap</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <div class="widget HTML" id="HTML4">
+        <h2 class="title">📞 संपर्क / Contact</h2>
+        <div class="widget-content">
+          <ul class="contact-list">
+            <li>📧 Email: your-email@example.com</li>
+            <li>📍 Location: India</li>
+            <li>🕐 Reply time: 24–48 घंटे</li>
+          </ul>
+          <p class="disclaimer"><b>Disclaimer:</b> इस ब्लॉग पर दी गई जानकारी केवल सामान्य उद्देश्य से है।</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <div class="widget Attribution">Powered by Blogger</div>
+      <p class="footer-note">© <span id="fyear">2026</span> Skill Digital Blog — All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<button aria-label="ऊपर जाएँ | Back to top" id="to-top" title="ऊपर जाएँ / Back to top" type="button">▲</button>
+
+<script src="theme.js"></script>
+</body>
+</html>
