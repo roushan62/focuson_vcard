@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:version='2' class='v2' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+  <meta content='width=device-width, initial-scale=1' name='viewport'/>
+  <meta content='#14418f' name='theme-color'/>
+
+  <!-- SEO Title -->
+  <b:if cond='data:blog.pageType == "item"'>
+    <title><data:blog.pageName/> | <data:blog.title/></title>
+  <b:else/>
+    <b:if cond='data:blog.pageType == "static_page"'>
+      <title><data:blog.pageName/> | <data:blog.title/></title>
+    <b:else/>
+      <b:if cond='data:blog.searchLabel'>
+        <title><data:blog.searchLabel/> | <data:blog.title/></title>
+      <b:else/>
+        <b:if cond='data:blog.searchQuery'>
+          <title><data:blog.searchQuery/> | <data:blog.title/></title>
+        <b:else/>
+          <title><data:blog.pageTitle/></title>
+        </b:if>
+      </b:if>
+    </b:if>
+  </b:if>
+
+  <b:include data='blog' name='all-head-content'/>
+
+  <!-- Open Graph + Twitter Card -->
+  <meta expr:content='data:blog.url' property='og:url'/>
+  <meta expr:content='data:blog.pageTitle' property='og:title'/>
+  <meta expr:content='data:blog.title' property='og:site_name'/>
+  <b:if cond='data:blog.pageType == "item"'>
+    <meta content='article' property='og:type'/>
+  <b:else/>
+    <meta content='website' property='og:type'/>
+  </b:if>
+  <b:if cond='data:blog.metaDescription'>
+    <meta expr:content='data:blog.metaDescription' property='og:description'/>
+  </b:if>
+  <b:if cond='data:blog.postImageUrl'>
+    <meta expr:content='data:blog.postImageUrl' property='og:image'/>
+    <meta content='summary_large_image' name='twitter:card'/>
+  <b:else/>
+    <meta content='summary' name='twitter:card'/>
+  </b:if>
+  <meta expr:content='data:blog.pageTitle' name='twitter:title'/>
+
+  <!-- Noindex for search results, archives and 404 -->
+  <b:if cond='data:blog.pageType == "archive" or data:blog.searchQuery or data:blog.pageType == "error_page"'>
+    <meta content='noindex, follow' name='robots'/>
+  </b:if>
+
+  <!-- Fonts -->
+  <link href='https://fonts.googleapis.com' rel='preconnect'/>
+  <link crossorigin='anonymous' href='https://fonts.gstatic.com' rel='preconnect'/>
+  <link href='https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&amp;family=Noto+Sans+Devanagari:wght@400;500;600;700;800&amp;display=swap' rel='stylesheet'/>
+
+  <!-- Apply saved accessibility settings before paint (no flash) -->
+  <script type='text/javascript'>
+    try {
+      var sidhGet = function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } };
+      var sidhRoot = document.documentElement;
+      if (sidhGet('sidh-dark') === '1') { sidhRoot.classList.add('dark'); }
+      if (sidhGet('sidh-hc') === '1') { sidhRoot.classList.add('hc'); }
+      var sidhFs = sidhGet('sidh-fs');
+      if (sidhFs) { sidhRoot.style.fontSize = sidhFs + '%'; }
+    } catch (e) {}
+  </script>
+
+  <b:skin><![CDATA[
+@@CSS@@
+]]></b:skin>
+</head>
+
+<body expr:class='data:blog.pageType'>
+
+  <a class='skip-link' href='#main-content'>मुख्य सामग्री पर जाएँ | Skip to main content</a>
+
+  <div aria-hidden='true' id='read-progress'></div>
+  <div aria-hidden='true' class='tricolor'></div>
+
+  <!-- ================= Accessibility Toolbar ================= -->
+  <div class='a11y-bar'>
+    <div class='container a11y-inner'>
+      <div class='a11y-left'>
+        <a class='a11y-link' href='/p/screen-reader-access.html' title='Screen Reader Access'>🅰 <span>Screen Reader Access</span></a>
+      </div>
+      <div class='a11y-tools'>
+        <span class='a11y-label'>Text Size:</span>
+        <button aria-label='फ़ॉन्ट छोटा करें | Decrease text size' class='a11y-btn' id='fs-dec' type='button'>A−</button>
+        <button aria-label='सामान्य फ़ॉन्ट | Normal text size' class='a11y-btn' id='fs-reset' type='button'>A</button>
+        <button aria-label='फ़ॉन्ट बड़ा करें | Increase text size' class='a11y-btn' id='fs-inc' type='button'>A+</button>
+        <button aria-label='हाई कंट्रास्ट चालू/बंद करें | Toggle high contrast' aria-pressed='false' class='a11y-btn' id='t-contrast' type='button'>◐ Contrast</button>
+        <button aria-label='डार्क मोड चालू/बंद करें | Toggle dark mode' aria-pressed='false' class='a11y-btn' id='t-dark' type='button'>🌙 Dark</button>
+        <div class='gt-wrap' id='google_translate_element' title='भाषा चुनें | Select language'></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= Header ================= -->
+  <header class='site-header' id='site-header'>
+    <div class='container header-grid'>
+      <div class='header-brand'>
+        <b:section class='header-sec' id='header' maxwidgets='1' showaddelement='no'>
+          <b:widget id='Header1' locked='true' title='' type='Header'/>
+        </b:section>
+      </div>
+      <form class='header-search' expr:action='data:blog.homepageUrl + "search"' method='get' role='search'>
+        <label class='sr-only' for='sidh-q'>खोजें | Search this blog</label>
+        <input id='sidh-q' name='q' placeholder='खोजें / Search…' type='search'/>
+        <input name='max-results' type='hidden' value='8'/>
+        <button aria-label='खोजें | Search' class='search-btn' type='submit'>
+          <svg fill='none' height='18' stroke='currentColor' stroke-linecap='round' stroke-width='2.2' viewBox='0 0 24 24' width='18'><circle cx='11' cy='11' r='7'/><line x1='21' x2='16.3' y1='21' y2='16.3'/></svg>
+        </button>
+      </form>
+    </div>
+  </header>
+
+  <!-- ================= Navigation ================= -->
+  <nav aria-label='मुख्य मेन्यू | Main navigation' class='main-nav' id='main-nav'>
+    <div class='container nav-wrap'>
+      <button aria-controls='LinkList1' aria-expanded='false' class='nav-toggle' id='nav-toggle' type='button'>☰ <span>मेन्यू / Menu</span></button>
+      <b:section class='nav-sec' id='navigation' maxwidgets='2' showaddelement='yes'>
+        <b:widget id='LinkList1' locked='false' title='Main Menu' type='LinkList'>
+          <b:widget-settings>
+            <b:widget-setting name='sorting'>NONE</b:widget-setting>
+            <b:widget-setting name='text-0'>होम / Home</b:widget-setting>
+            <b:widget-setting name='link-0'>/</b:widget-setting>
+            <b:widget-setting name='text-1'>सरकारी योजनाएँ</b:widget-setting>
+            <b:widget-setting name='link-1'>/search/label/Schemes</b:widget-setting>
+            <b:widget-setting name='text-2'>नौकरी / Jobs</b:widget-setting>
+            <b:widget-setting name='link-2'>/search/label/Jobs</b:widget-setting>
+            <b:widget-setting name='text-3'>रिजल्ट / Results</b:widget-setting>
+            <b:widget-setting name='link-3'>/search/label/Results</b:widget-setting>
+            <b:widget-setting name='text-4'>हमारे बारे में</b:widget-setting>
+            <b:widget-setting name='link-4'>/p/about.html</b:widget-setting>
+            <b:widget-setting name='text-5'>संपर्क / Contact</b:widget-setting>
+            <b:widget-setting name='link-5'>/p/contact.html</b:widget-setting>
+          </b:widget-settings>
+        </b:widget>
+      </b:section>
+    </div>
+  </nav>
+
+  <!-- ================= Hero ================= -->
+  <div class='container'>
+    <b:section class='hero' id='hero' maxwidgets='2' showaddelement='yes'>
+      <b:widget id='HTML1' locked='false' title='' type='HTML'>
+        <b:widget-settings>
+          <b:widget-setting name='content'>@@HERO@@</b:widget-setting>
+        </b:widget-settings>
+      </b:widget>
+    </b:section>
+  </div>
+
+  <!-- ================= Main + Sidebar ================= -->
+  <div class='container main-wrap' id='main-content'>
+
+    <main class='content-area'>
+      <b:if cond='data:blog.pageType == "item"'>
+        <nav aria-label='Breadcrumb' class='breadcrumbs'>
+          <a expr:href='data:blog.homepageUrl'>🏠 होम / Home</a>
+          <span class='crumb-sep'>›</span>
+          <span class='crumb-current'><data:blog.pageName/></span>
+        </nav>
+      </b:if>
+      <b:if cond='data:blog.pageType == "static_page"'>
+        <nav aria-label='Breadcrumb' class='breadcrumbs'>
+          <a expr:href='data:blog.homepageUrl'>🏠 होम / Home</a>
+          <span class='crumb-sep'>›</span>
+          <span class='crumb-current'><data:blog.pageName/></span>
+        </nav>
+      </b:if>
+
+      <b:section class='content-section' id='main' maxwidgets='1' showaddelement='no'>
+        <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog'/>
+      </b:section>
+    </main>
+
+    <aside aria-label='साइडबार | Sidebar' class='sidebar-area'>
+      <b:section class='sidebar' id='sidebar' showaddelement='yes'>
+        <b:widget id='HTML2' locked='false' title='👤 हमारे बारे में / About Us' type='HTML'>
+          <b:widget-settings>
+            <b:widget-setting name='content'>@@ABOUT@@</b:widget-setting>
+          </b:widget-settings>
+        </b:widget>
+        <b:widget id='PopularPosts1' locked='false' title='🔥 लोकप्रिय पोस्ट / Popular Posts' type='PopularPosts'>
+          <b:widget-settings>
+            <b:widget-setting name='numItemsToShow'>5</b:widget-setting>
+            <b:widget-setting name='showThumbnails'>true</b:widget-setting>
+            <b:widget-setting name='showSnippets'>true</b:widget-setting>
+            <b:widget-setting name='timeRange'>ALL_TIME</b:widget-setting>
+          </b:widget-settings>
+        </b:widget>
+        <b:widget id='Label1' locked='false' title='🏷️ श्रेणियाँ / Labels' type='Label'>
+          <b:widget-settings>
+            <b:widget-setting name='sorting'>ALPHA</b:widget-setting>
+            <b:widget-setting name='display'>CLOUD</b:widget-setting>
+            <b:widget-setting name='selectedLabelsList'/>
+            <b:widget-setting name='showType'>ALL</b:widget-setting>
+            <b:widget-setting name='showFreqNumbers'>true</b:widget-setting>
+          </b:widget-settings>
+        </b:widget>
+        <b:widget id='BlogArchive1' locked='false' title='🗓️ आर्काइव / Archive' type='BlogArchive'>
+          <b:widget-settings>
+            <b:widget-setting name='showStyle'>FLAT</b:widget-setting>
+          </b:widget-settings>
+        </b:widget>
+      </b:section>
+    </aside>
+
+  </div>
+
+  <!-- ================= Footer ================= -->
+  <footer class='site-footer'>
+    <div class='footer-grid'>
+      <b:section class='footer-col' id='footer-1' showaddelement='yes'>
+        <b:widget id='HTML3' locked='false' title='ℹ️ पोर्टल परिचय / About this Portal' type='HTML'>
+          <b:widget-settings>
+            <b:widget-setting name='content'>@@FABOUT@@</b:widget-setting>
+          </b:widget-settings>
+        </b:widget>
+      </b:section>
+      <b:section class='footer-col' id='footer-2' showaddelement='yes'>
+        <b:widget id='LinkList2' locked='false' title='🔗 महत्वपूर्ण लिंक / Important Links' type='LinkList'>
+          <b:widget-settings>
+            <b:widget-setting name='sorting'>NONE</b:widget-setting>
+            <b:widget-setting name='text-0'>होम / Home</b:widget-setting>
+            <b:widget-setting name='link-0'>/</b:widget-setting>
+            <b:widget-setting name='text-1'>हमारे बारे में / About</b:widget-setting>
+            <b:widget-setting name='link-1'>/p/about.html</b:widget-setting>
+            <b:widget-setting name='text-2'>संपर्क / Contact</b:widget-setting>
+            <b:widget-setting name='link-2'>/p/contact.html</b:widget-setting>
+            <b:widget-setting name='text-3'>प्राइवेसी पॉलिसी / Privacy Policy</b:widget-setting>
+            <b:widget-setting name='link-3'>/p/privacy-policy.html</b:widget-setting>
+            <b:widget-setting name='text-4'>डिस्क्लेमर / Disclaimer</b:widget-setting>
+            <b:widget-setting name='link-4'>/p/disclaimer.html</b:widget-setting>
+            <b:widget-setting name='text-5'>साइटमैप / Sitemap</b:widget-setting>
+            <b:widget-setting name='link-5'>/p/sitemap.html</b:widget-setting>
+          </b:widget-settings>
+        </b:widget>
+      </b:section>
+      <b:section class='footer-col' id='footer-3' showaddelement='yes'>
+        <b:widget id='HTML4' locked='false' title='📞 संपर्क / Contact' type='HTML'>
+          <b:widget-settings>
+            <b:widget-setting name='content'>@@FCONTACT@@</b:widget-setting>
+          </b:widget-settings>
+        </b:widget>
+      </b:section>
+    </div>
+    <div class='footer-bottom'>
+      <div class='footer-bottom-inner'>
+        <b:section id='footer-bottom-sec' maxwidgets='1' showaddelement='no'>
+          <b:widget id='Attribution1' locked='false' title='' type='Attribution'/>
+        </b:section>
+        <p class='footer-note'>© <span id='fyear'>2026</span> <data:blog.title/> — All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <button aria-label='ऊपर जाएँ | Back to top' id='to-top' title='ऊपर जाएँ / Back to top' type='button'>▲</button>
+
+  <!-- ================= Structured Data (SEO) ================= -->
+  <script type='application/ld+json'>
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "<data:blog.title/>",
+    "url": "<data:blog.homepageUrl/>",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "<data:blog.homepageUrl/>search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  <b:if cond='data:blog.pageType == "item"'>
+    <script type='application/ld+json'>
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "<data:blog.url/>" },
+      "headline": "<data:blog.pageName/>",
+      "url": "<data:blog.url/>",
+      "publisher": { "@type": "Organization", "name": "<data:blog.title/>", "url": "<data:blog.homepageUrl/>" }
+    }
+    </script>
+    <script type='application/ld+json'>
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "<data:blog.homepageUrl/>" },
+        { "@type": "ListItem", "position": 2, "name": "<data:blog.pageName/>" }
+      ]
+    }
+    </script>
+  </b:if>
+
+  <!-- ================= Theme JavaScript ================= -->
+  <script type='text/javascript'>
+//<![CDATA[
+@@JS@@
+//]]>
+  </script>
+
+</body>
+</html>
